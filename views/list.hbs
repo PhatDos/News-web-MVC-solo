@@ -1,0 +1,39 @@
+<div class="articles-list">
+    <div class="big">
+        <div class="left">
+            <button type="button" class="btn btn-info category">Category: {{CategoryName}}</button>
+            <div class="des">Description: {{des}} </div>
+            {{#each article }}
+            <div class="article">
+                <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="News"></a>
+                <div>
+                    <h4>{{this.title}}</h4>
+                    <p class="text-body-secondary">{{this.updatedAt}}</p>
+                    <p>Views: {{this.views}}</p>
+                    <a href="/details?id={{this._id}}">Read More</a>
+                </div>
+            </div>
+            <hr>
+            {{/each}}
+        </div>
+        <!-- Right -->
+        <div class="right">
+            <div style="padding-left: 30px;">
+                <h3 class="heading-3">
+                    Top 5 Newest News
+                </h3>
+                <div class="lists">
+                    {{#each newest5Articles as |article|}}
+                    <div class="list" style="margin-bottom: 50px;">
+                        <a href="/details?id={{article._id}}"><img src="{{article.image_url}}" alt="photo 1"></a>
+                        <h4>{{this.title}}</h4>
+                        <p class="text-body-secondary">{{this.updatedAt}}</p>
+                        <p>Views: {{this.views}}</p>
+                        <a href="/details?id={{this._id}}">Read More</a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+<div class="article-management-editor">
+    <div class="container">
+        <h1>Article Management - Editor</h1>
+
+        <!-- Article list -->
+        <section class="article-list">
+            <h2>Articles Pending Review</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Summary</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                        <th>Premium</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample data -->
+                    {{#each getPendingArticlesByUser}}
+                    <input type="hidden" id="articleId{{@index}}" value="{{this._id}}">
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.status}}</td>
+                        <td>{{this.category.name}}</td>
+                        <td>{{this.premium}}</td>
+                        <td>
+                            <button onClick="copyValue('articleId{{@index}}', 'articleId' )"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#articleModal" data-bs-whatever="@fat" onclick="">Approve</button>
+                            <button onClick="copyValue('articleId{{@index}}', 'articleIdReject' )"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#articleModalReject" data-bs-whatever="@fat" onclick="">Reject</button>
+                        </td>
+                    </tr>
+                    {{/each}}
+
+
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+
+        <!-- Modal: Approve article -->
+<div class="modal fade" id="articleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Approve</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/article/approve" method="POST" id="categoryForm">
+          <div class="mb-3">
+                <input type="hidden" id="articleId" name="articleId">
+                <label for="publishDate">Publish Date:</label>
+                <input type="datetime-local" id="publishDate" name="publishDate" required><br><br>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="articleModalReject" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Reject</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/article/reject" method="POST" id="categoryForm">
+          <div class="mb-3">
+                <input type="hidden" id="articleIdReject" name="articleIdReject">
+                <label for="rejectReason">Reject Reason:</label>
+                <input type="text" id="rejectReason" name="rejectReason" required><br><br>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <script>
+        function copyValue(idInput, idOutput) {
+            // Lấy giá trị từ Input 1
+            const input1Value = document.getElementById(`${idInput}`).value;
+
+            // Gán giá trị cho Input 2
+            document.getElementById(`${idOutput}`).value = input1Value;
+        }
+    </script>

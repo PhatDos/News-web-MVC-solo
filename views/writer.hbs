@@ -1,0 +1,94 @@
+<div class="article-management">
+    <div class="container">
+        <h1>Article Management</h1>
+
+        <!-- New article submission form -->
+        <section class="form-section">
+            <h2>Submit New Article</h2>
+            <form action="/submit_article" method="POST">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required><br><br>
+
+                <label for="category">Category:</label>
+                <select id="category" name="category" required>
+                    {{#each category }}
+                    <option name="category" value="{{this._id}}">{{this.name}}</option>
+                    {{/each}}
+                </select><br><br>
+
+                <label for="content">Content:</label>
+                <textarea id="content" name="content"></textarea><br><br>
+
+                <div class="tags-container">
+                    <label for="tags">Select Tags:</label>
+                    <select id="tags" name="tags[]" multiple size="4" onchange="updateSelectedTags()">
+                        {{#each tag }}
+                        <option name="tags" value="{{this._id}}">{{this.name}}</option>
+                        {{/each}}
+                    </select><br><br>
+
+                    <div id="selected-tags-container">
+                        <p>Selected Tags:</p>
+                        <div id="selected-tags-list" class="selected-tags"></div>
+                    </div>
+                </div>
+
+                <label for="premium">Select Tags:</label>
+                <select id="premium" name="premium" multiple size="2">
+                    <option name="tags" value="true">Normal</option>
+                    <option name="tags" value="true">Premium</option>
+                </select><br><br>
+
+                <label for="image">Link image :</label>
+                <input type="text" id="image" name="image_url"><br><br>
+
+                <label for="video">Link Youtube:</label>
+                <input type="text" id="video" name="video_url"><br><br>
+
+                <button type="submit">Post Article</button>
+            </form>
+        </section>
+
+        <!-- Article list -->
+        <section class="article-list">
+            <h2>Article List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Sample data, can be replaced with PHP or JavaScript to display articles from the database -->
+                    <tr>
+                        <td>Technology Article</td>
+                        <td>Technology</td>
+                        <td>Approved</td>
+                        <td><button disabled>Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Sports Article</td>
+                        <td>Sports</td>
+                        <td>Pending</td>
+                        <td><button disabled>Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Politics Article</td>
+                        <td>Politics</td>
+                        <td>Rejected</td>
+                        <td><button>Edit</button></td>
+                    </tr>
+                    <tr>
+                        <td>Economics Article</td>
+                        <td>Economics</td>
+                        <td>Not Reviewed</td>
+                        <td><button>Edit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

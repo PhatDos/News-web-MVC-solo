@@ -1,0 +1,245 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.letter {
+    font-size: 12px;
+    display: flex;
+    line-height: 0.1;
+}
+
+.container .list p a {
+    text-decoration: none;
+    color: black;
+}
+
+.container .heading-1 {
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.container .heading-2 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.container .heading-3 {
+    font-size: 23px; /* Increased to 23px */
+    text-transform: uppercase;
+    color: crimson;
+    margin-bottom: 10px;
+}
+
+.container .sub-heading {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 18px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    padding-right: 50px;
+}
+
+.container .sub-heading p {
+    font-weight: 700;
+    text-transform: capitalize;
+    margin-right: 10px;
+}
+
+.container .sub-heading span {
+    color: #555;
+    font-weight: 300;
+    padding-right: 10px;
+    border-radius: 12px;
+}
+
+.container .sub-heading .important {
+    color: crimson;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+.container article > p {
+    font-size: 20px;
+    margin-bottom: 20px;
+    hyphens: auto;
+}
+
+.container article p:first-child::first-line {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.container .home {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+.container .home-img {
+    width: 100%;
+}
+
+.container .list {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.container .list img {
+    width: 100%;
+    height: 80px;
+}
+
+.container blockquote {
+    font-size: 23px; /* Increased to 23px */
+    padding: 10px 30px;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.container blockquote::before {
+    content: open-quote;
+    position: absolute;
+    top: -48px;
+    left: -4px;
+    opacity: .3;
+    color: #666;
+    font-size: 150px;
+}
+
+.container .cards {
+    columns: 25ch 3;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.container .card {
+    font-size: 20px;
+    border: 1px solid;
+    padding: 10px 20px;
+    break-inside: avoid;
+}
+
+.tags {
+    background-color: #f0f0f0;
+    margin-right: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.tags:hover {
+    background-color: #888;
+}
+
+.views {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 200px;
+    font-size: 14px;
+}
+
+.title:hover {
+    font-size: 20px;
+}
+
+@media (max-width: 950px) {
+    .container .home {
+        grid-template-columns: 1fr;
+    }
+
+    .container .lists {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .container .list {
+        grid-template-columns: 1fr 5fr;
+    }
+
+    .container .card {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 650px) {
+    .container .list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Set all relevant font sizes to 23px inside the container */
+.container header .sub-heading .letter p {
+    font-size: 23px; /* Set font size for p elements inside .letter */
+    font-weight: normal;
+    margin-top: 15px;
+}
+
+.container header .sub-heading span {
+    font-size: 23px; /* Set font size for the 'Tags:' span */
+}
+
+.container header h5 {
+    font-size: 23px; /* Set font size for Author */
+}
+
+.container header h6 {
+    font-size: 23px; /* Set font size for Status */
+}
+
+/* Set font size for the button inside .container */
+.container button.btn-info {
+    font-size: 23px; /* Set font size for the button */
+    background-color: #fff;
+}
+
+.letter {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container .heading-1 {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container .heading-2 {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container .heading-3 {
+    font-size: 23px; /* Already set to 23px */
+}
+
+.container .sub-heading {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container article > p {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container article p:first-child::first-line {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container blockquote {
+    font-size: 23px; /* Already set to 23px */
+}
+
+.container .cards {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.container .card {
+    font-size: 23px; /* Increased to 23px */
+}
+
+.views {
+    font-size: 23px; /* Increased to 23px */
+}
+

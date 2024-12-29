@@ -1,0 +1,151 @@
+/* Scoped styles for login */
+.login-body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+.login-body .register-container {
+    width: 360px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.login-body .register-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 23px; /* Increased to 23px */
+}
+
+.login-body .form-group {
+    margin-bottom: 20px;
+}
+
+.login-body .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-size: 23px; /* Increased to 23px */
+}
+
+.login-body .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 23px; /* Increased to 23px */
+}
+
+.login-body .btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.login-body .btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 23px; /* Increased to 23px */
+    transition: background-color 0.3s ease;
+}
+
+.login-body .btn-primary {
+    background-color: #00796b;
+    color: #fff;
+}
+
+.login-body .btn-primary:hover {
+    background-color: #004d40;
+}
+
+.login-body .btn-premium {
+    background-color: #00796b;
+    color: #fff;
+}
+
+.login-body .btn-premium {
+    background-color: #004d40;
+}
+
+.login-body .btn-secondary {
+    background-color: #546e7a;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 23px; /* Increased to 23px */
+}
+
+.login-body .btn-secondary:hover {
+    background-color: #37474f;
+}
+
+.login-body .register-note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+    font-size: 23px; /* Increased to 23px */
+    color: #555;
+}
+
+.login-body .register-note button {
+    padding: 8px 16px;
+    font-size: 23px; /* Increased to 23px */
+}
+
+.login-body .social-login-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-body .social-login-section p {
+    font-size: 23px; /* Increased to 23px */
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.login-body .social-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 23px; /* Increased to 23px */
+    cursor: pointer;
+    color: #fff;
+}
+
+.login-body .google-btn {
+    background-color: #db4437;
+}
+
+.login-body .google-btn:hover {
+    background-color: #b33628;
+}
+
+.login-body .facebook-btn {
+    background-color: #4267B2;
+}
+
+.login-body .facebook-btn:hover {
+    background-color: #365899;
+}
+
+.login-body .email-btn {
+    background-color: #fbbc05;
+}
+
+.login-body .email-btn:hover {
+    background-color: #e0a800;
+}

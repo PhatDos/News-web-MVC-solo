@@ -1,0 +1,45 @@
+.category_nav {
+    background: #131A22;
+    font-family: calibri;
+    padding-right: 15px;
+    padding-left: 15px;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    gap: 15px; /* Increased spacing between the items */
+    list-style: none; /* Ensure no bullets on list items */
+}
+
+.category_nav li {
+    color: white;
+    list-style: none;
+    display: inline-block;
+    margin-right: 15px; /* Increased margin to match the new gap */
+    position: relative;
+}
+
+.category_nav li a {
+    color: white;
+    font-size: 23px; /* Increased font size */
+    text-decoration: none;
+}
+
+.category_nav svg {
+    vertical-align: middle; /* Ensures icons align properly with text */
+    width: 30px;  /* Set a fixed width for the icon */
+    height: 30px; /* Set a fixed height for the icon */
+}
+
+.category_nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.category_nav li a:hover {
+    color: #E74C3C; /* Crimson Red for hover effect */
+}
+
+.category_nav, .dropdown {
+    position: relative; 
+}

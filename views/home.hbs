@@ -1,0 +1,151 @@
+<h2 class="carousel-title" style="text-align: center">Top 10 Newest News of All Categories</h2>
+<div class="owl-carousel owl-theme">
+  {{#each newestArticles as |article|}}
+
+  <div class="item">
+    <article>
+      <a href="/details?id={{article._id}}">
+        <img src="{{article.image_url.[0]}}" alt="{{article.title}}">
+      </a>
+      <div>
+        <a href="/details?id={{article._id}}">
+          <h3>
+            {{article.title}}
+          </h3>
+        </a>
+        <p>Category: {{this.category.name}}</p>
+        <p class="text-body-secondary">Tags:
+          {{#each article.tags as |tag|}}
+          <a>{{tag.name}}</a>
+          {{/each}}
+        </p>
+        <p class="text-body-secondary">{{article.updatedAt}}</p>
+        <p>Views: {{this.views}}</p>
+        <a href="/details?id={{article._id}}">Read More</a>
+      </div>
+    </article>
+  </div>
+  {{/each}}
+</div>
+
+<h2 class="carousel-title" style="text-align: center">Top 10 Categories with 1 Newest Post</h2>
+<div class="owl-carousel owl-theme">
+  {{#each latestArticlesFromCategories}}
+  <div class="item">
+    <article>
+      <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="{{this.title}}"></a>
+      <div>
+        <h3>{{this.title}} </h3>
+        <p>Category: {{this.category.name}}</p>
+        <p class="text-body-secondary">Tags:
+          {{#each this.tags as |tag|}}
+          <a>{{tag.name}}</a>
+          {{/each}}
+        </p>
+        <p class="text-body-secondary">{{this.updatedAt}}</p>
+        <p>Views: {{this.views}}</p>
+        <a href="/details?id={{this._id}}">Read More</a>
+      </div>
+    </article>
+  </div>
+  {{/each}}
+</div>
+
+<section class="main-container-left">
+  {{#each popularArticles}}
+  <article>
+    <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="{{this.title}}"></a>
+    <div>
+      <p>Category: {{this.category.name}}</p>
+      <p class="text-body-secondary">Tags:
+        {{#each this.tags as |tag|}}
+        <a>{{tag.name}}</a>
+        {{/each}}
+      </p>
+      <p class="text-body-secondary">{{this.updatedAt}}</p>
+      <p>Views: {{this.views}}</p>
+      <a href="/details?id={{this._id}}">Read More</a>
+    </div>
+  </article>
+  {{/each}}
+</section>
+<!--Hiển thị 3-4 bài viết nổi bật nhất trong tuần qua
+        Hiển thị 10 bài viết được xem nhiều nhất (mọi chuyên mục) -->
+
+
+
+<div class="custom-container">
+  <!-- Left Column -->
+  <section class="main-container-left">
+    <h2 style="font-size: 35px;">Top News of the Week (3-4 news)</h2>
+
+    <!-- Top Left Container -->
+    <div class="container-top-left">
+
+
+      <!-- Top Left Container (for the first article) -->
+      <div class="container-top-left">
+        <article>
+          <a href="/details?id={{article1._id}}">
+            <img src="{{article1.image_url.[0]}}" alt="{{article1.title}}">
+          </a>
+          <div>
+            <h2>{{article1.title}}</h2>
+            <p>Category: {{article1.category.name}}</p>
+            <p class="text-body-secondary">{{article1.updatedAt}}</p>
+            <p>Views: {{article1.views}}</p>
+            <a href="/details?id={{article1._id}}">Read More</a>
+          </div>
+        </article>
+      </div>
+      <!-- Bottom Left Container -->
+      <!-- Bottom Left Container (for the second and third articles) -->
+      <div class="container-bottom-left">
+        <article>
+          <a href="/details?id={{article2._id}}">
+            <img src="{{article2.image_url.[0]}}" alt="{{article2.title}}">
+          </a>
+          <div>
+            <h2>{{article2.title}}</h2>
+            <p>Category: {{article2.category.name}}</p>
+            <p class="text-body-secondary">{{article2.updatedAt}}</p>
+            <p>Views: {{article2.views}}</p>
+            <a href="/details?id={{article2._id}}">Read More</a>
+          </div>
+        </article>
+
+        <article>
+          <a href="/details?id={{article3._id}}">
+            <img src="{{article3.image_url.[0]}}" alt="{{article3.title}}">
+          </a>
+          <div>
+            <h2>{{article3.title}}</h2>
+            <p>Category: {{article3.category.name}}</p>
+            <p class="text-body-secondary">{{article3.updatedAt}}</p>
+            <p>Views: {{article3.views}}</p>
+            <a href="/details?id={{article3._id}}">Read More</a>
+          </div>
+        </article>
+      </div>
+  </section>
+
+  <!-- Right Column -->
+  <section class="main-container-right">
+    <h2 style="font-size: 35px;">Top News (10 news)</h2>
+    {{#each topViewedArticles }}
+    <article>
+      <p>Category: {{this.category.name}}</p>
+      <div>
+        <h2>{{this.title}}</h2>
+        <p class="text-body-secondary">{{this.updatedAt}}</p>
+        <h4>Views: {{this.views}}</h4>
+        <a href="/details?id={{this._id}}">Read More</a>
+      </div>
+      <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="Right News"></a>
+    </article>
+    {{/each}}
+
+
+
+  </section>
+</div>

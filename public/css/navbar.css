@@ -1,0 +1,90 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    height: 90px;  /* Adjust the height of the logo */
+    width: auto;
+    display: block;
+}
+
+.navbar {
+    background: #232F3E;
+    font-family: calibri;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.nav_div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.nav_left ul, .nav_right ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px; 
+}
+
+.nav_brand a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.nav_left ul li p {
+    margin: 0; 
+    display: inline-block;
+    color: white;
+    padding-right: 10px; 
+}   
+
+.btnSearch {
+    height: 40px;
+    width: 40px;
+    outline: none;
+    border: none;
+    background: #FFFF;
+    color: #232F3E;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.search {
+    text-align: center;
+    height: 40px;
+    width: auto;
+    border-radius: 60px;
+    outline: none;
+    border: 2px solid #232F3E;
+}
+
+.nav_right, .nav_left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar li {
+    color: white;
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar li a {
+    color: white;
+    font-size: 25px;
+    font-weight: none;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar li a:hover {
+    color: #000000; /* hover effect */
+}

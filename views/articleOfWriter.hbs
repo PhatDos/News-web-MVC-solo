@@ -1,0 +1,21 @@
+<div class="articles-list">
+    <div class="big">
+        <div class="left">
+            <button style="margin-bottom: 50px;" type="button" class="btn btn-info category">Article of {{usernamee}}</button>
+            {{#each article }}
+            <div class="article">
+                <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="News"></a>
+                <div>
+                    <h4>{{this.title}}</h4>
+                    <p class="text-body-secondary">{{this.updatedAt}}</p>
+                    <p>Views: {{this.views}}</p>
+                    <a href="/details?id={{this._id}}">Read More</a>
+                </div>
+                <h3 style="margin-left: 150px;">Status: {{this.status}}</h3>
+            </div>
+            <hr>
+            {{/each}}
+        </div>
+        <!-- Right -->
+    </div>
+</div>
