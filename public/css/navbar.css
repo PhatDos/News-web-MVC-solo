@@ -1,7 +1,31 @@
+.hello .logout {
+    margin-left: 40px;
+    font-size: 35px;
+    background-color:#0d6efd;
+    border-radius: 8px;
+    padding: 0 12px 0 12px;
+    height: 50px;
+    line-height: 50px;
+}
+.logout:hover {
+    background-color:aliceblue;
+    color: black;
+}
+
 body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.hello{
+    font-size: 33px;
+    color: aliceblue;
+    display: flex; 
+    justify-content: flex-end;
+    margin-right: 70px;
+    line-height: 70px;
+    align-items: center;
 }
 
 .logo {
@@ -15,6 +39,8 @@ body {
     font-family: calibri;
     padding-right: 15px;
     padding-left: 15px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .nav_div {
@@ -25,7 +51,7 @@ body {
     width: 100%;
 }
 
-.nav_left ul, .nav_right ul {
+.nav_left ul, ul {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,7 +91,7 @@ body {
     border: 2px solid #232F3E;
 }
 
-.nav_right, .nav_left {
+ .nav_left {
     display: flex;
     align-items: center;
 }

@@ -233,5 +233,15 @@ export const articleController = {
     } catch (err) {
       console.error(err);
     }
+  },
+  incrementView: async (id) => {
+    try {
+      const article = await Article.updateOne(
+        { _id: id },
+        { $inc: { views: 1 } }
+      );
+    } catch (err) {
+      console.error(err);
+    }
   }
 };

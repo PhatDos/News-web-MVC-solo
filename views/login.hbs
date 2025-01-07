@@ -2,6 +2,9 @@
     {{#if message}}
         <p>{{message}}</p>
     {{/if}}
+    {{#if has_errors}}
+        <strong>Login failed.</strong> {{has_errors}}
+    {{/if}}
     <!-- Login/Register Form -->
     <form action="/login" method="post">
         <div class="register-container">

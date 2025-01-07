@@ -85,5 +85,5 @@ export const categoryController = {
       console.error(err);
       return { message: "Server error" };
     }
-  },
+  }
 };

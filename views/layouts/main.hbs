@@ -46,33 +46,45 @@
 <body>
     <!--navbar-->
     <nav class="navbar">
-        <div class="nav_div">
-            <div class="nav_left">
-                <ul>
-                    <li class="nav_brand">
-                        <a href="/"><img src="https://i.ibb.co/y6fR8M8/logo.png" alt="Gr6'S News Logo" class="logo"></a>
-                    </li>
-                    <li>
-                        <p>
-                        <p style="font-size: 30px;" id="datetime"></p>
+        <div class="nav_left">
+            <ul>
+                <li class="nav_brand">
+                    <a href="/"><img src="https://i.ibb.co/y6fR8M8/logo.png" alt="Gr6'S News Logo" class="logo"></a>
+                </li>
+                <li>
+                    <p>
+                    <p style="font-size: 30px;" id="datetime"></p>
 
-                        <script>
-                            // Lấy thời gian hiện tại
-                            const now = new Date();
-                            // Định dạng thời gian
-                            const formattedDate = now.toLocaleString(); // Sử dụng định dạng theo ngôn ngữ hệ thống
+                    <script>
+                        // Lấy thời gian hiện tại
+                        const now = new Date();
+                        // Định dạng thời gian
+                        const formattedDate = now.toLocaleString(); // Sử dụng định dạng theo ngôn ngữ hệ thống
 
-                            const day = String(now.getDate()).padStart(2, '0'); // Ngày
-                            const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng
-                            const year = now.getFullYear(); // Năm
-                            // Hiển thị trong HTML
-                            document.getElementById("datetime").textContent = `Ngày ${day}, tháng ${month}, ${year} TP.HCM`;
-                        </script>
-                        </p>
-                    </li>
-                </ul>
+                        const day = String(now.getDate()).padStart(2, '0'); // Ngày
+                        const month = String(now.getMonth() + 1).padStart(2, '0'); // Tháng
+                        const year = now.getFullYear(); // Năm
+                        // Hiển thị trong HTML
+                        document.getElementById("datetime").textContent = `Ngày ${day}, tháng ${month}, ${year} TP.HCM`;
+                    </script>
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div class="nav_right">
+            {{#if auth}}
+            <div class="hello"> 
+                <div>Hello {{authUser.username}} </div>
+                <div class="logout">
+                    <form id="frmLogout" action="/logout" method="post"></form>
+                    <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
+                        <i class="bi bi-box-arrow-right"></i>
+                            Log out
+                    </a>
+                </div>
             </div>
-            <div class="nav_right">
+            {{/if}}
+            <div>
                 <ul>
                     <li><a href="/writer/articles">Articles of writer</a></li>
                     <li><a href="/subscribe"button type="button" class="btn btn-outline-danger">Subscribe</button></a></li>
@@ -89,11 +101,10 @@
                             </button>
                         </form>
                     </li>
-                    {{!-- {{#if auth}}
-                    <li>Hello {{username}}</li>
-                    {{else}} --}}
+                    {{#if auth}}
+                    {{else}}
                     <li><a href="/login">Log In</a></li>
-                    
+                    {{/if}}
                 </ul>
             </div>
         </div>
