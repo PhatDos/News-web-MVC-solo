@@ -348,6 +348,12 @@ app.get("/about", function rootHandler(req, res) {
   res.render("about");
 });
 
+///aahjshdaskjdaskj
+app.get("/nhingu", function rootHandler(req, res) {
+  res.render("nhingu");
+});
+///adasdasdasdsd
+
 app.get("/subscribe", function rootHandler(req, res) {
   res.render("subscribe");
 });
