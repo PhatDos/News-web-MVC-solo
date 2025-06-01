@@ -4,8 +4,8 @@
     padding-right: 15px;
     padding-left: 15px;
     display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center; 
+    align-items: center; 
     gap: 15px; /* Increased spacing between the items */
     list-style: none; /* Ensure no bullets on list items */
 }
@@ -37,9 +37,96 @@
 }
 
 .category_nav li a:hover {
-    color: #E74C3C; /* Crimson Red for hover effect */
+    color: #E74C3C; 
 }
 
-.category_nav, .dropdown {
+.category_nav {
     position: relative; 
+}
+
+/* Mega Menu */
+.dropdown .mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    transform: translateX(-62vw);
+    width: 80vw;
+    max-width: 80vw;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px 0 20px 0px;
+    border-radius: 8px;
+    z-index: 1000;
+    overflow-y: auto;
+    max-height: 30vw;
+}
+
+.dropdown:hover .mega-menu {
+    display: block;
+}
+
+/* Flex grid for categories */
+.dropdown .mega-menu .submenu-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Submenu style */
+.dropdown .mega-menu .submenu {
+    flex: 1 1 calc(20% - 20px);
+    /* 5 columns, responsive */
+    max-width: fit-content;
+    padding-left: 30px;
+}
+
+.dropdown .mega-menu .submenu ul{
+    display: block;
+}
+
+.dropdown .mega-menu .submenu ul li{
+    display: block;
+    font-size: 11px;
+    margin-bottom: 5px;
+}
+
+.dropdown .mega-menu .submenu ul li a{
+    font-size: 13px;
+}
+
+.dropdown .mega-menu h4 {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #bf0d2a;
+}
+
+.dropdown .mega-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown .mega-menu li {
+    
+}
+
+.dropdown .mega-menu a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.dropdown .mega-menu a:hover {
+    color: #bf0d2a;
+}
+
+.dropdown .mega-menu .view-more {
+    font-size: 14px;
+    color: #bf0d2a;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: bold;
 }

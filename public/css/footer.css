@@ -1,6 +1,8 @@
 footer {
     position: relative;
     background-color: #232F3E;
+    bottom: 0;
+    zoom: 0.8;
 }
 
 footer .footer_container {

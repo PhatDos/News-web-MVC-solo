@@ -1,19 +1,20 @@
-<h2 class="carousel-title" style="text-align: center">Top 10 Newest News of All Categories</h2>
-<div class="owl-carousel owl-theme">
+<body>
+<h2 class="carousel-title" style="text-align: center;">Top 10 Newest News of All Categories</h2>
+<div class="owl-carousel owl-theme all_newsblock">
   {{#each newestArticles as |article|}}
 
-  <div class="item">
+  <div class="item newsblock">
     <article>
       <a href="/details?id={{article._id}}">
         <img src="{{article.image_url.[0]}}" alt="{{article.title}}">
       </a>
-      <div>
+      <div class="newsblock-text">
         <a href="/details?id={{article._id}}">
-          <h3>
+          <h2>
             {{article.title}}
-          </h3>
+          </h2>
         </a>
-        <p>Category: {{this.category.name}}</p>
+        <div class="newsblock-text_cate">Category: {{this.category.name}}</div>
         <p class="text-body-secondary">Tags:
           {{#each article.tags as |tag|}}
           <a>{{tag.name}}</a>
@@ -29,9 +30,9 @@
 </div>
 
 <h2 class="carousel-title" style="text-align: center">Top 10 Categories with 1 Newest Post</h2>
-<div class="owl-carousel owl-theme">
+<div class="owl-carousel owl-theme all_newsblock">
   {{#each latestArticlesFromCategories}}
-  <div class="item">
+  <div class="item newsblock">
     <article>
       <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="{{this.title}}"></a>
       <div>
@@ -71,8 +72,6 @@
 </section>
 <!--Hiển thị 3-4 bài viết nổi bật nhất trong tuần qua
         Hiển thị 10 bài viết được xem nhiều nhất (mọi chuyên mục) -->
-
-
 
 <div class="custom-container">
   <!-- Left Column -->
@@ -144,7 +143,6 @@
     </article>
     {{/each}}
 
-
-
   </section>
 </div>
+</body>

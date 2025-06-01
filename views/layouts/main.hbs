@@ -47,16 +47,15 @@
     <!--navbar-->
     <nav class="navbar">
         <div class="nav_left">
-            <ul>
-                <li class="nav_brand">
-                    <a href="/"><img src="https://i.ibb.co/y6fR8M8/logo.png" alt="Gr6'S News Logo" class="logo"></a>
+            <ul style="margin-bottom: 0px;">
+                <li class="nav_brand" style="height: 70px;">
+                    <a href="/" class="d-inline-block"><img src="https://i.ibb.co/y6fR8M8/logo.png" alt="Gr6'S News Logo" class="logo"></a>
                 </li>
                 <li>
                     <p>
                     <p style="font-size: 30px;" id="datetime"></p>
 
                     <script>
-                        // Lấy thời gian hiện tại
                         const now = new Date();
                         // Định dạng thời gian
                         const formattedDate = now.toLocaleString(); // Sử dụng định dạng theo ngôn ngữ hệ thống
@@ -84,8 +83,8 @@
                 </div>
             </div>
             {{/if}}
-            <div>
-                <ul>
+            <div class="child_nav_right">
+                <ul style="margin-bottom: 0px;">
                     <li><a href="/writer/articles">Articles of writer</a></li>
                     <li><a href="/subscribe"button type="button" class="btn btn-outline-danger">Subscribe</button></a></li>
                     <li><a href="/latest">Latest</a></li>
@@ -114,7 +113,7 @@
     <nav class="category_nav">
         <ul>
             <li><a href="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor"
                         class="bi bi-house" viewBox="0 0 16 16">
                         <path
                             d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
@@ -127,22 +126,7 @@
             <li><a href="/category?name=Education">Education</a></li>
             <li><a href="/category?name=Health">Health</a></li>
             <li><a href="/category?name=Travel">Travel</a></li>
-            <!--        <li><a href="#">Real Estate</a></li>
-            <li><a href="#">Science</a></li>
-            <li><a href="#">Entertainment</a></li>
-            <li><a href="#">Sport</a></li>
-            <li><a href="#">Law</a></li>
-            <li><a href="#">Education</a></li>
-            <li><a href="#">Health</a></li>
-            <li><a href="#">Life</a></li>
-            <li><a href="#">Tourism</a></li>
-            <li><a href="#">Digitalizaion</a></li>
-            <li><a href="#">Cart</a></li>
-            <li><a href="#">Option</a></li>
-            <li><a href="#">Confide</a></li> -->
-            <!--mega menu-->
             <li class="dropdown">
-
                 <a href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-list" viewBox="0 0 16 16">
@@ -150,17 +134,14 @@
                             d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
                     </svg>
                 </a>
-
                 <div class="mega-menu">
                     <div class="submenu-container">
-
                         <div class="submenu">
                             <h4>Technology</h4>
                             <ul>
                                 <li><a href="#">JavaScript</a></li>
                                 <li><a href="#">Python</a></li>
                                 <li><a href="#">Machine Learning </a></li>
-                                <!--                             <li><a href="#">Traffic</a></li> -->
                             </ul>
                         </div>
 
@@ -170,7 +151,6 @@
                                 <li><a href="#">Physics</a></li>
                                 <li><a href="#">Biology</a></li>
                                 <li><a href="#">Astronomy</a></li>
-                                <!--                            <li><a href="#">Business & Management</a></li> -->
                             </ul>
                         </div>
 
@@ -180,7 +160,6 @@
                                 <li><a href="#">Painting</a></li>
                                 <li><a href="#">Sculpture</a></li>
                                 <li><a href="#">Digital Art</a></li>
-                                <!--                            <li><a href="#">Life here and there</a></li> -->
                             </ul>
                         </div>
 
@@ -190,7 +169,6 @@
                                 <li><a href="#">Online education</a></li>
                                 <li><a href="#">STEM</a></li>
                                 <li><a href="#">University Courses</a></li>
-                                <!--                            <li><a href="#">Law</a></li> -->
                             </ul>
                         </div>
 
@@ -200,7 +178,6 @@
                                 <li><a href="#">Mental Health</a></li>
                                 <li><a href="#">Yoga</a></li>
                                 <li><a href="#">Nutrition</a></li>
-                                <!--                            <li><a href="#">Stock</a></li> -->
                             </ul>
                         </div>
 
@@ -210,8 +187,7 @@
                                 <li><a href="#">Adventure</a></li>
                                 <li><a href="#">Cultural Tourism</a></li>
                                 <li><a href="#">Beach Destinations</a></li>
-                                <!--                            <li><a href="#">Invented</a></li> -->
-                                <!--                        </ul>
+                                </ul>
                         </div>
 
                         <div class="submenu">
@@ -291,41 +267,14 @@
                                 <li><a href="#">Life</a></li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
-
             </li>
-        </ul>-->
+        </ul>
     </nav>
 
     {{{body}}}
 
-    <!--footer-->
-    <footer>
-        <div class="footer_container">
-            <div class="footr_details_one">
-                <h3>Get to Know US</h3>
-                <a href="/about" class="footer-link">About us</a>
-            </div>
-            <div class="footr_details_one">
-                <h3>Connect with Us</h3>
-                <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
-                <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
-                <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
-            </div>
-            <div class="footr_details_one forres">
-                <h3>Make Money with Us</h3>
-                <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
-                <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
-                <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
-            </div>
-        </div>
-        <div class="lastdetails">
-            <p>Conditions of Use & Sale &nbsp; &nbsp;&nbsp; Privacy Notice &nbsp; &nbsp;&nbsp; Interest-Based
-                Ads &nbsp; &nbsp;&nbsp; © 2024-{year}, Inc. or its affiliates</p>
-        </div>
-    </footer>
 
     <!--Owl SLick-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
@@ -337,4 +286,31 @@
     <Script src="/js/Scripts.js"> </Script>
 </body>
 
+
+
 </html>
+
+<footer>
+    <div class="footer_container">
+        <div class="footr_details_one">
+            <h3>Get to Know US</h3>
+            <a href="/about" class="footer-link">About us</a>
+        </div>
+        <div class="footr_details_one">
+            <h3>Connect with Us</h3>
+            <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
+            <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
+            <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
+        </div>
+        <div class="footr_details_one forres">
+            <h3>Make Money with Us</h3>
+            <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
+            <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
+            <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
+        </div>
+    </div>
+    <div class="lastdetails">
+        <p>Conditions of Use & Sale &nbsp; &nbsp;&nbsp; Privacy Notice &nbsp; &nbsp;&nbsp; Interest-Based
+            Ads &nbsp; &nbsp;&nbsp; © 2024-{year}, Inc. or its affiliates</p>
+    </div>
+</footer>

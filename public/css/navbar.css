@@ -29,18 +29,24 @@ body {
 }
 
 .logo {
-    height: 90px;  /* Adjust the height of the logo */
+    height: 70px;  /* Adjust the height of the logo */
     width: auto;
     display: block;
 }
 
 .navbar {
+    zoom: 0.8;
     background: #232F3E;
     font-family: calibri;
     padding-right: 15px;
     padding-left: 15px;
     margin-top: 0px;
     margin-bottom: 0px;
+    height: 110px;
+    display: flex;
+    color: white;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .nav_div {
@@ -51,6 +57,16 @@ body {
     width: 100%;
 }
 
+.nav_right{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.nav_left{
+    max-height: 100%;   /* bằng cha navbar */
+}
+
 .nav_left ul, ul {
     display: flex;
     flex-direction: row;
@@ -58,10 +74,10 @@ body {
     gap: 10px; 
 }
 
-.nav_brand a {
-    color: white;
-    font-size: 30px;
-    text-decoration: none;
+.child_nav_right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav_left ul li p {
@@ -89,11 +105,6 @@ body {
     border-radius: 60px;
     outline: none;
     border: 2px solid #232F3E;
-}
-
- .nav_left {
-    display: flex;
-    align-items: center;
 }
 
 .navbar li {

@@ -15,8 +15,10 @@ import { categoryController } from "./Controllers/category.js";
 import { tagController } from "./Controllers/tag.js";
 import { userController } from "./Controllers/user.js";
 import session from "express-session";
-
 import hbs_section from "express-handlebars-sections";
+
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -435,5 +437,5 @@ app.get("/latest", async (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(`Server running on port http://localhost:3000/`);
+  console.log(`Server running on port http://localhost:3000`);
 });
