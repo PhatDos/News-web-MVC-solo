@@ -1,12 +1,20 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    /* padding: 0px !important;
+    margin: 0px !important; */
+}
+
+.img-container{
+    max-width: 70%;
 }
 
 .letter {
     font-size: 12px;
     display: flex;
     line-height: 0.1;
+}
+
+.author{
+    font-size: 17px;
 }
 
 .container .list p a {
@@ -44,17 +52,15 @@
     padding-right: 50px;
 }
 
+.sub-heading a{
+    all: unset;
+    cursor: pointer;
+}
+
 .container .sub-heading p {
     font-weight: 700;
     text-transform: capitalize;
     margin-right: 10px;
-}
-
-.container .sub-heading span {
-    color: #555;
-    font-weight: 300;
-    padding-right: 10px;
-    border-radius: 12px;
 }
 
 .container .sub-heading .important {
@@ -113,13 +119,14 @@
     font-size: 150px;
 }
 
-.container .cards {
+.cards {
     columns: 25ch 3;
-    gap: 40px;
     margin-bottom: 40px;
+    font-size: 23px;
+    padding: 0px 63px;
 }
 
-.container .card {
+.card {
     font-size: 20px;
     border: 1px solid;
     padding: 10px 20px;
@@ -127,20 +134,18 @@
 }
 
 .tags {
-    background-color: #f0f0f0;
+    font-size: 20px;
     margin-right: 10px;
-    font-size: 12px;
-    font-weight: bold;
 }
 
-.tags:hover {
-    background-color: #888;
+.tags:hover{
+    color: crimson;
 }
 
 .views {
     display: flex;
     justify-content: flex-end;
-    margin-right: 200px;
+    margin-right: 80px;
     font-size: 14px;
 }
 
@@ -163,7 +168,7 @@
         grid-template-columns: 1fr 5fr;
     }
 
-    .container .card {
+    .card {
         margin-bottom: 20px;
     }
 }
@@ -176,15 +181,10 @@
 
 /* Set all relevant font sizes to 23px inside the container */
 .container header .sub-heading .letter p {
-    font-size: 23px; /* Set font size for p elements inside .letter */
+    font-size: 15px; /* Set font size for p elements inside .letter */
     font-weight: normal;
     margin-top: 15px;
 }
-
-.container header .sub-heading span {
-    font-size: 23px; /* Set font size for the 'Tags:' span */
-}
-
 .container header h5 {
     font-size: 23px; /* Set font size for Author */
 }
@@ -229,10 +229,6 @@
 
 .container blockquote {
     font-size: 23px; /* Already set to 23px */
-}
-
-.container .cards {
-    font-size: 23px; /* Increased to 23px */
 }
 
 .container .card {

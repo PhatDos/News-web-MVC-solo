@@ -9,7 +9,7 @@ const articleSchema = new mongoose.Schema({
   status: {
     type: String,
     enum: ["draft", "published", "rejected", "pending"],
-    default: "draft",
+    default: "draft"
   },
   author: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
@@ -17,7 +17,7 @@ const articleSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   views: { type: Number, default: 1 },
-  rejectionNote: { type: String, default: "" },
+  rejectionNote: { type: String, default: "" }
 });
 
 export const Article = mongoose.model("Article", articleSchema);

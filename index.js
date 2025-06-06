@@ -143,7 +143,7 @@ app.get("/details", async function rootHandler(req, res) {
     return res.send("No data");
   }
   //Get 5 news same category
-  const name = data.category.name || 0;
+  const name = data.category.name || "";
   const category = await categoryController.getCategoryByName(name);
   const articles = await Article.find({
     category: category._id,
@@ -193,12 +193,22 @@ app.get("/category", async function rootHandler(req, res) {
   if (!category) {
     return res.send("Không có chuyên mục này");
   }
-
   const articles = await Article.find({
     category: category._id,
     status: "published"
   }).lean();
+  const articlee = await Article.find({
+    category: category._id,
+    status: "published"
+  })
+    .sort({ views: -1 })
+    .limit(4)
+    .lean();
   res.render("list", {
+    article1: articlee[0],
+    article2: articlee[1],
+    article3: articlee[2],
+    article4: articlee[3],
     CategoryName: req.query.name,
     des: category.description,
     article: articles,

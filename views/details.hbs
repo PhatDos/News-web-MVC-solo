@@ -1,24 +1,24 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<div class="container">
+<div class="container mt-4">
     <header>
         <div class="sub-heading">
             <div>
                 <div>
-                    <div class="letter"> <p>Create: {{this.article.createdAt}}</p></div>
                     <div class="letter"> <p>Update: {{this.article.updatedAt}}</p></div>
-                    <span>Tags: </span>
+                    <a href="/category?name={{this.article.category.name}}">
                     {{#each this.article.tags}}
-                        <span class="badge badge-pill tags">
+                        <span class="tags">
                             {{this.name}}
                         </span>
                     {{/each}}
+                    </a>
                 </div>
             </div>
-        <div>
-            <h5>Author: {{article.author.username}}</h5>
-            <h6>
+        <div class="pe-5">
+            <div class="author">Author: {{article.author.username}}</div>
+            <div class="author">
                 Status: {{this.article.status}}
-            </h6>
+            </div>
         </div>
     </header>
 
@@ -61,8 +61,8 @@
     <div style="margin-bottom: 50px;">
         <h4>Image</h4>
         {{#each this.article.image_url}}
-            <div class="video-container">
-                <img src="{{this}}" alt="image">
+            <div>
+                <img class="img-container" src="{{this}}" alt="image">
             </div>
         {{/each}}
     </div>
@@ -76,7 +76,11 @@
         {{/each}}
     </div>
 
-    <div class="cards">
+    
+    </div>
+</div>
+
+<div class="cards" style="max-width:100vw">
         <div class="card">
             <div class="heading-4">Title</div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, nostrum officiis eos eligendi

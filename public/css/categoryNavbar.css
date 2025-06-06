@@ -14,7 +14,7 @@
     color: white;
     list-style: none;
     display: inline-block;
-    margin-right: 15px; /* Increased margin to match the new gap */
+    margin-right: 45px; /* Increased margin to match the new gap */
     position: relative;
 }
 
@@ -49,7 +49,7 @@
     display: none;
     position: absolute;
     top: 100%;
-    transform: translateX(-62vw);
+    transform: translateX(-68vw);
     width: 80vw;
     max-width: 80vw;
     background: white;
@@ -71,6 +71,8 @@
 .dropdown .mega-menu .submenu-container {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+    padding-right: 2vw;
 }
 
 /* Submenu style */
@@ -79,6 +81,7 @@
     /* 5 columns, responsive */
     max-width: fit-content;
     padding-left: 30px;
+    padding-bottom: 10px;
 }
 
 .dropdown .mega-menu .submenu ul{

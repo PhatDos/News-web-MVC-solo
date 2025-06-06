@@ -8,8 +8,16 @@ a {
     font-size: 25px; /* Set font size for all <a> tags */
 }
 
-a, p, li, h1, h2, h3, h4, h5, h6, span {
+a, p, li, h1, h2, h3, h4, h5, h6 {
     font-size: 23px; /* Increased font size for text elements */
+}
+
+.ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;      /* Số dòng hiển thị */
+    -webkit-box-orient: vertical;
+    overflow: hidden;         
+    text-overflow: ellipsis;     /* Hiển thị "..." */
 }
 
 .all_newsblock{
@@ -21,23 +29,35 @@ a, p, li, h1, h2, h3, h4, h5, h6, span {
 
 .newsblock{
     zoom: 0.8;
-    border: solid 1px #e0e0e0;
+    border: solid 0.5px #e0e0e0;
     border-radius: 20px;
     transition: box-shadow 0.4s ease, transform 0.4s ease;
     overflow: hidden;
     margin: 7px 3px;
     position: relative;
     z-index: 9999;
+    background-color: #fdfbfb;
+    height: fit-content;
 }
 
-.newsblock:hover {
+.newsblock:hover{
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
     transform: translateY(-5px); 
+}
+
+.newsblock:hover h2{
+    color: #E74C3C;
 }
 
 .newsblock-text {
     text-align: left;
     padding-left: 15px;
+    height: 200px;
+}
+
+.item.newsblock img{
+    height: 210px;
+    width: auto;
 }
 
 .newsblock-text_cate{
@@ -45,6 +65,10 @@ a, p, li, h1, h2, h3, h4, h5, h6, span {
     color: #757575;
     background: #F5F5F5;
     font-size: 14px;
+}
+.custom-container{
+    width: 99vw !important;
+    box-sizing: border-box;
 }
 
 .custom-container img {
@@ -63,6 +87,20 @@ a, p, li, h1, h2, h3, h4, h5, h6, span {
 .custom-container hr {
     width: 95vw;
     margin: 0 auto;
+}
+
+/* right container */
+.cate-container-right{
+    font-size: 15px !important;
+    margin-bottom: 2px;
+}
+
+.ago{
+    margin-bottom: 0px !important;
+}
+
+.main-container-right a:hover{
+    color:#124278 !important;
 }
 
 .carousel-title {
@@ -95,7 +133,6 @@ a img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 .item p {
@@ -119,13 +156,19 @@ a img {
     color: #000;
 }
 
-.item a:hover {
+.rm{
+    position: relative;
+    left: 17%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.item .rm:hover {
     color: #E74C3C;
 }
 
 /* Main Content */
 .custom-container a {
-    padding: 15px 0;
+    padding: 0px;
     display: block;
     transition: all 0.5s;
     font-size: 23px; /* Increased font size */
@@ -151,11 +194,12 @@ a img {
 
 /* Left Container */
 .main-container-left {
-    padding: 30px 10px;
+    box-sizing: border-box;
+    padding: 0px 10px 30px 10px;
 }
 
 .main-container-left>h2 {
-    padding: 15px 0 15px 30px;
+    padding: 0px 0 15px 30px;
     font-size: 23px; /* Increased font size */
 }
 
@@ -175,28 +219,40 @@ a img {
 }
 
 .container-top-left {
-    padding: 15px 30px;
+    zoom: 0.8;
+    padding-left: 2vw;
 }
 
 .container-bottom-left {
-    margin: 15px 30px;
+    /* margin: 15px 30px; */
 }
 
 /* Right Container */
 .main-container-right {
-    padding: 30px 10px;
+    box-sizing: border-box;
+    padding: 0px !important;
+}
+
+.article-right-container{
+    margin-left: 25px;
+}
+
+.text-right-container{
+    padding-left: 12px;
+    margin-right: 3px !important;
 }
 
 .main-container-right>h2 {
-    padding: 15px 0 15px 30px;
+    padding: 0px 0 15px 30px;
     font-size: 23px; /* Increased font size */
 }
 
 .main-container-right article {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    padding: 15px 0;
+    grid-template-columns: 3fr 1fr;
+    padding: 18px 0;
     border-bottom: 1px solid #131A22;
+    max-height: 170px;
 }
 
 .main-container-right article:last-child {
@@ -204,27 +260,27 @@ a img {
 }
 
 .main-container-right img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: auto;
     align-self: center;
 }
 
 .main-container-right h4 {
-    text-align: center;
-    text-transform: uppercase;
     font-weight: 300;
-    font-size: 23px; /* Increased font size */
-    align-self: center;
+    font-size: 15px; /* Increased font size */
+    text-align: right;
+    padding-right: 1vw;
+    margin-top: 10px;
 }
 
 .main-container-right article h2 {
     font-size: 23px; /* Increased font size */
-    padding: 10px 0;
+    padding: 0px;
     font-family: var(--heading);
 }
 
 .main-container-right article p {
-    font-size: 23px; /* Increased font size */
+    font-size: 17px; /* Increased font size */
     font-weight: 300;
 }
 
@@ -281,3 +337,103 @@ a img {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* CSS slides */
+.slide_img{
+    width: 100vw !important;
+    height: 92vh;
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.item.newsslide article {
+    position: relative; /* tạo context cho position absolute bên trong */
+}
+  
+.newsslide-text {
+    width: 100vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: rgb(174, 169, 169);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
+    padding: 0px 0px 40px 80px;
+    border-radius: 5px;
+}
+
+.item.newsslide article:hover .newsslide-text .slide_title{
+    color: #fff;
+}
+
+.item.newsslide article:hover .readmore{
+    color: #fff !important;
+}
+
+.item.newsslide article::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to bottom, rgba(18, 18, 18, 0) 0%, rgba(0,0,0,0.95) 100%);
+    opacity: 0;
+    pointer-events: none; /* để không chặn sự kiện chuột */
+    transition: opacity 0.3s ease;
+}
+  
+/* Khi hover bật lớp phủ */
+.item.newsslide article:hover::before {
+    opacity: 1;
+}
+
+.slide_title, .update{
+    color: rgb(174, 169, 169);
+}
+
+.readmore{
+    position: relative;
+    left: 75vw;
+    bottom: 5vh;
+    color: rgb(174, 169, 169) !important;
+}
+
+.all_newsslide {
+    position: relative;
+}
+  
+.all_newsslide .owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 0 10px;
+}
+  
+.all_newsslide .owl-nav button.owl-prev,
+.all_newsslide .owl-nav button.owl-next {
+    background: none !important;
+    color: white;
+    border: none;
+    font-size: 120px !important;
+    line-height: 1;
+}
+  
+.all_newsslide .owl-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+  
+.all_newsslide .owl-dot.active{
+    background: none !important;
+    zoom: 1.5;
+}
+  
+.all_newsslide .owl-dot.active {
+    background: #fff;
+}
+  

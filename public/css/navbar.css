@@ -1,11 +1,11 @@
 .hello .logout {
-    margin-left: 40px;
+    margin-left: 20px;
     font-size: 35px;
-    background-color:#0d6efd;
     border-radius: 8px;
     padding: 0 12px 0 12px;
     height: 50px;
     line-height: 50px;
+    border: oldlace 1px solid;
 }
 .logout:hover {
     background-color:aliceblue;
@@ -16,16 +16,6 @@ body {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
-
-.hello{
-    font-size: 33px;
-    color: aliceblue;
-    display: flex; 
-    justify-content: flex-end;
-    margin-right: 70px;
-    line-height: 70px;
-    align-items: center;
 }
 
 .logo {

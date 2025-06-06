@@ -25,6 +25,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    {{!-- icon bootstraps --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <!-- google fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Raleway:wght@300;400;500;700;900&display=swap"
@@ -45,16 +47,15 @@
 
 <body>
     <!--navbar-->
-    <nav class="navbar">
+    <nav class="navbar" style="flex-wrap: nowrap;">
         <div class="nav_left">
             <ul style="margin-bottom: 0px;">
                 <li class="nav_brand" style="height: 70px;">
-                    <a href="/" class="d-inline-block"><img src="https://i.ibb.co/y6fR8M8/logo.png" alt="Gr6'S News Logo" class="logo"></a>
+                    <a href="/" class="d-inline-block"><img src="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/newspaper_news_rss_vector-1024.png" alt="Gr6'S News Logo" class="logo"></a>
                 </li>
                 <li>
                     <p>
                     <p style="font-size: 30px;" id="datetime"></p>
-
                     <script>
                         const now = new Date();
                         // Định dạng thời gian
@@ -71,23 +72,11 @@
             </ul>
         </div>
         <div class="nav_right">
-            {{#if auth}}
-            <div class="hello"> 
-                <div>Hello {{authUser.username}} </div>
-                <div class="logout">
-                    <form id="frmLogout" action="/logout" method="post"></form>
-                    <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
-                        <i class="bi bi-box-arrow-right"></i>
-                            Log out
-                    </a>
-                </div>
-            </div>
-            {{/if}}
             <div class="child_nav_right">
                 <ul style="margin-bottom: 0px;">
                     <li><a href="/writer/articles">Articles of writer</a></li>
-                    <li><a href="/subscribe"button type="button" class="btn btn-outline-danger">Subscribe</button></a></li>
-                    <li><a href="/latest">Latest</a></li>
+                    {{!-- <li><a href="/subscribe"button type="button" class="btn btn-outline-danger">Subscribe</button></a></li>
+                    <li><a href="/latest">Latest</a></li> --}}
                     <li>
                         <form class="d-flex" role="search" action="/search" method="get">
                             <input class="me-2 search" name="q" type="search" placeholder="Search" aria-label="Search">
@@ -100,6 +89,18 @@
                             </button>
                         </form>
                     </li>
+                    {{#if auth}}
+                    <div class="hello ms-2"> 
+                        <li style="font-size: 25px; margin-left:15px;">Hello {{authUser.username}} </li>
+                        <li class="logout">
+                            <form id="frmLogout" action="/logout" method="post"></form>
+                            <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
+                                Log out
+                                <i class="bi bi-box-arrow-right ms-2"></i>
+                            </a>
+                        </li>
+                    </div>
+                    {{/if}}
                     {{#if auth}}
                     {{else}}
                     <li><a href="/login">Log In</a></li>
@@ -139,132 +140,121 @@
                         <div class="submenu">
                             <h4>Technology</h4>
                             <ul>
-                                <li><a href="#">JavaScript</a></li>
-                                <li><a href="#">Python</a></li>
-                                <li><a href="#">Machine Learning </a></li>
+                                <li><a href="/category?name=Technology">JavaScript</a></li>
+                                <li><a href="/category?name=Technology">Python</a></li>
+                                <li><a href="/category?name=Technology">Machine Learning </a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Science</h4>
                             <ul>
-                                <li><a href="#">Physics</a></li>
-                                <li><a href="#">Biology</a></li>
-                                <li><a href="#">Astronomy</a></li>
+                                <li><a href="/category?name=Science">Physics</a></li>
+                                <li><a href="/category?name=Science">Biology</a></li>
+                                <li><a href="/category?name=Science">Astronomy</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Art</h4>
                             <ul>
-                                <li><a href="#">Painting</a></li>
-                                <li><a href="#">Sculpture</a></li>
-                                <li><a href="#">Digital Art</a></li>
+                                <li><a href="/category?name=Art">Painting</a></li>
+                                <li><a href="/category?name=Art">Sculpture</a></li>
+                                <li><a href="/category?name=Art">Digital Art</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Education</h4>
                             <ul>
-                                <li><a href="#">Online education</a></li>
-                                <li><a href="#">STEM</a></li>
-                                <li><a href="#">University Courses</a></li>
+                                <li><a href="/category?name=Education">Online education</a></li>
+                                <li><a href="/category?name=Education">STEM</a></li>
+                                <li><a href="/category?name=Education">University Courses</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Health</h4>
                             <ul>
-                                <li><a href="#">Mental Health</a></li>
-                                <li><a href="#">Yoga</a></li>
-                                <li><a href="#">Nutrition</a></li>
+                                <li><a href="/category?name=Health">Mental Health</a></li>
+                                <li><a href="/category?name=Health">Yoga</a></li>
+                                <li><a href="/category?name=Health">Nutrition</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Travel</h4>
                             <ul>
-                                <li><a href="#">Adventure</a></li>
-                                <li><a href="#">Cultural Tourism</a></li>
-                                <li><a href="#">Beach Destinations</a></li>
+                                <li><a href="/category?name=Travel">Adventure</a></li>
+                                <li><a href="/category?name=Travel">Cultural Tourism</a></li>
+                                <li><a href="/category?name=Travel">Beach Destinations</a></li>
                                 </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Entertainment</h4>
                             <ul>
-                                <li><a href="#">Celebrity</a></li>
-                                <li><a href="#">Book</a></li>
-                                <li><a href="#">Video</a></li>
-                                <li><a href="#">Movie</a></li>
+                                <li><a href="/category?name=Entertainment">Celebrity</a></li>
+                                <li><a href="/category?name=Entertainment">Book</a></li>
+                                <li><a href="/category?name=Entertainment">Video</a></li>
+                                <li><a href="/category?name=Entertainment">Movie</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Sport</h4>
                             <ul>
-                                <li><a href="#">AFF Cup 2024</a></li>
-                                <li><a href="#">Football</a></li>
-                                <li><a href="#">Match schedule</a></li>
-                                <li><a href="#">Marathon</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="submenu">
-                            <h4>Health</h4>
-                            <ul>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Diseases</a></li>
-                                <li><a href="#">Live healthy</a></li>
-                                <li><a href="#">Vaccine</a></li>
+                                <li><a href="/category?name=Sports">AFF Cup 2024</a></li>
+                                <li><a href="/category?name=Sports">Football</a></li>
+                                <li><a href="/category?name=Sports">Match schedule</a></li>
+                                <li><a href="/category?name=Sports">Marathon</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Life</h4>
                             <ul>
-                                <li><a href="#">Rhythm of life</a></li>
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">Life Lessons</a></li>
-                                <li><a href="#">Cooking</a></li>
+                                <li><a href="/category?name=Lifestyle">Rhythm of life</a></li>
+                                <li><a href="/category?name=Lifestyle">Home</a></li>
+                                <li><a href="/category?name=Lifestyle">Life Lessons</a></li>
+                                <li><a href="/category?name=Lifestyle">Cooking</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
                             <h4>Tourism</h4>
                             <ul>
-                                <li><a href="#">Destination</a></li>
-                                <li><a href="#">Cuisine</a></li>
-                                <li><a href="#">Footprint</a></li>
-                                <li><a href="#">Advise</a></li>
+                                <li><a href="/category?name=Travel">Destination</a></li>
+                                <li><a href="/category?name=Travel">Cuisine</a></li>
+                                <li><a href="/category?name=Travel">Footprint</a></li>
+                                <li><a href="/category?name=Travel">Advise</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
-                            <h4>Digitalization</h4>
+                            <h4>Bussiness</h4>
                             <ul>
-                                <li><a href="#">Technology</a></li>
-                                <li><a href="#">Product</a></li>
-                                <li><a href="#">Blockchain</a></li>
-                                <li><a href="#">Experience</a></li>
+                                <li><a href="/category?name=Business">Finance</a></li>
+                                <li><a href="/category?name=Business">Marketing</a></li>
+                                <li><a href="/category?name=Business">Operations</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
-                            <h4>Car</h4>
+                            <h4>Food</h4>
                             <ul>
-                                <li><a href="#">Market</a></li>
-                                <li><a href="#">Car Awards 2024</a></li>
-                                <li><a href="#">Forum</a></li>
-                                <li><a href="#">V-Car</a></li>
+                                <li><a href="/category?name=Food">Healthy Foods</a></li>
+                                <li><a href="/category?name=Food">Ingredients</a></li>
+                                <li><a href="/category?name=Food">Vegetarian</a></li>
                             </ul>
                         </div>
 
                         <div class="submenu">
-                            <h4>Opinion</h4>
+                            <h4>Art</h4>
                             <ul>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Life</a></li>
+                                <li><a href="/category?name=Art">Painting</a></li>
+                                <li><a href="/category?name=Art">Sculpture</a></li>
+                                <li><a href="/category?name=Art">Digital Art</a></li>
                             </ul>
                         </div>
                     </div>
@@ -275,7 +265,30 @@
 
     {{{body}}}
 
-
+    <footer>
+        <div class="footer_container">
+            <div class="footr_details_one">
+                <h3>Get to Know US</h3>
+                <a href="/about" class="footer-link">About us</a>
+            </div>
+            <div class="footr_details_one">
+                <h3>Connect with Us</h3>
+                <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
+                <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
+                <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
+            </div>
+            <div class="footr_details_one forres">
+                <h3>Make Money with Us</h3>
+                <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
+                <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
+                <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
+            </div>
+        </div>
+        <div class="lastdetails">
+            <p>Conditions of Use & Sale &nbsp; &nbsp;&nbsp; Privacy Notice &nbsp; &nbsp;&nbsp; Interest-Based
+                Ads &nbsp; &nbsp;&nbsp; © 2024-{year}, Inc. or its affiliates</p>
+        </div>
+    </footer>
     <!--Owl SLick-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -286,31 +299,4 @@
     <Script src="/js/Scripts.js"> </Script>
 </body>
 
-
-
 </html>
-
-<footer>
-    <div class="footer_container">
-        <div class="footr_details_one">
-            <h3>Get to Know US</h3>
-            <a href="/about" class="footer-link">About us</a>
-        </div>
-        <div class="footr_details_one">
-            <h3>Connect with Us</h3>
-            <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
-            <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
-            <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
-        </div>
-        <div class="footr_details_one forres">
-            <h3>Make Money with Us</h3>
-            <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
-            <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
-            <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
-        </div>
-    </div>
-    <div class="lastdetails">
-        <p>Conditions of Use & Sale &nbsp; &nbsp;&nbsp; Privacy Notice &nbsp; &nbsp;&nbsp; Interest-Based
-            Ads &nbsp; &nbsp;&nbsp; © 2024-{year}, Inc. or its affiliates</p>
-    </div>
-</footer>

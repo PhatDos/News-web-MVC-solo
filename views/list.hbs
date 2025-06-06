@@ -1,14 +1,50 @@
+{{!-- 4 bài nổi bật của category --}}
+{{!-- Bài đầu --}}
+<div class="mb-5 alll">
+    <div class="col-7">
+        <div class="hotnews-cate">
+            <div style="display: flex; align-items: center; font-size:25px" class="category mt-5">{{CategoryName}}: <div style="font-size: 20px; margin-left: 1vw; margin-top:2px">{{des}}</div></div>
+            <hr>
+            <div class="hotnews-big">
+                <a href="/details?id={{article1._id}}"><img class="hotnews-img" src="{{article1.image_url.[0]}}" alt="News"></a>
+                <div>
+                    <h4 class="hotnews-title">{{article1.title}} Title Title Title Title Tit Title Title Title Title Title Title</h4>
+                    <div class="content mt-3 ms-2 me-2 ellipsiss" style="line-height: 18px; font-size:14px">This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content This is content </div>
+                    <p class="text-body-secondary time-elapsed update mt-3 mb-0 ms-2" style="font-size: small;" data-updated="{{this.updatedAt}}"></p>
+                </div>
+            </div>
+        </div>
+        {{!-- 3 bài sau --}}
+        <div class="hotnews-cate-small">
+            <div class="hotnews-small">
+            <a href="/details?id={{article2._id}}"><img class="" src="{{article2.image_url.[0]}}" alt="News"></a>
+            <h6 class="hotnews-title">{{article2.title}}</h6>
+            </div>
+            <div class="hotnews-small">
+            <a href="/details?id={{article3._id}}"><img class="" src="{{article3.image_url.[0]}}" alt="News"></a>
+            <h6 class="hotnews-title">{{article1.title}}</h6>
+            </div>
+            <div>
+            <a href="/details?id={{article4._id}}"><img class="" src="{{article4.image_url.[0]}}" alt="News"></a>
+            <h6 class="hotnews-title">{{article4.title}}</h6>
+            </div>
+        </div>
+    </div>
+    <div class="col-1"></div>
+    <div class="col-3">
+        <img style="padding-top: 5vh;" src="https://siteimages.simplified.com/blog/Screenshot-2022-10-21-at-11.51.1-1.png?auto=compress&fm=png" alt="">
+    </div>
+</div>
+
 <div class="articles-list">
     <div class="big">
-        <div class="left">
-            <button type="button" class="btn btn-info category">Category: {{CategoryName}}</button>
-            <div class="des">Description: {{des}} </div>
+        <div class="left col-8">
             {{#each article }}
-            <div class="article">
+            <div class="article mt-2">
                 <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="News"></a>
                 <div>
                     <h4>{{this.title}}</h4>
-                    <p class="text-body-secondary">{{this.updatedAt}}</p>
+                    <p class="text-body-secondary time-elapsed update mb-0" data-updated="{{this.updatedAt}}"></p>
                     <p>Views: {{this.views}}</p>
                     <a href="/details?id={{this._id}}">Read More</a>
                 </div>
@@ -16,18 +52,20 @@
             <hr>
             {{/each}}
         </div>
-        <!-- Right -->
+        
+        {{!-- Right --}}
+        <div class="col-3">
         <div class="right">
-            <div style="padding-left: 30px;">
+            <div style="padding-left: 40px;">
                 <h3 class="heading-3">
                     Top 5 Newest News
                 </h3>
                 <div class="lists">
                     {{#each newest5Articles as |article|}}
                     <div class="list" style="margin-bottom: 50px;">
-                        <a href="/details?id={{article._id}}"><img src="{{article.image_url}}" alt="photo 1"></a>
+                        <a href="/details?id={{article._id}}"><img style="max-height:30vh; object-fit: cover" src="{{article.image_url}}" alt="photo 1"></a>
                         <h4>{{this.title}}</h4>
-                        <p class="text-body-secondary">{{this.updatedAt}}</p>
+                        <p class="text-body-secondary time-elapsed update mb-0" data-updated="{{article.updatedAt}}"></p>
                         <p>Views: {{this.views}}</p>
                         <a href="/details?id={{this._id}}">Read More</a>
                     </div>
@@ -36,4 +74,9 @@
             </div>
         </div>
     </div>
+        {{!-- Blank Middle --}}
+        <div class="col-1"></div>  
+    </div>
 </div>
+
+<script src="/js/timeago.js"></script>
