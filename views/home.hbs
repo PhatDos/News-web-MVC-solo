@@ -45,14 +45,16 @@
               {{article.title}}
             </h2>
           </a>
-          <div class="ms-1" style="margin-bottom: 4px;">Category: {{this.category.name}}</div>
-          <div class="ms-1"> Tags:
-            {{#each article.tags as |tag|}}
-            {{tag.name}}
-            {{/each}}
-          </div>
-          <p class="time-elapsed update mb-0" data-updated="{{article.updatedAt}}"></p>
-          <p class="mb-0 mt-1">Views: {{this.views}}</p>
+          <a href="/details?id={{article._id}}" class="text-decoration-none" style="color: rgb(174, 169, 169);">
+            <div class="ms-1" style="margin-bottom: 4px;">Category: {{this.category.name}}</div>
+            <div class="ms-1"> Tags:
+              {{#each article.tags as |tag|}}
+              {{tag.name}}
+              {{/each}}
+            </div>
+            <p class="time-elapsed update mb-0" data-updated="{{article.updatedAt}}"></p>
+            <p class="mb-0 mt-1">Views: {{this.views}}</p>
+          </a>
           <a href="/details?id={{article._id}}" class="readmore ms-1">Read More</a>
         </div>
       </article>
