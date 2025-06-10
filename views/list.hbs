@@ -38,8 +38,9 @@
 
 <div class="articles-list">
     <div class="big">
-        <div class="left col-8">
+        <div class="left col-8 mb-5">
             {{#each article }}
+            <hr>
             <div class="article mt-2">
                 <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="News"></a>
                 <div>
@@ -49,7 +50,6 @@
                     <a href="/details?id={{this._id}}">Read More</a>
                 </div>
             </div>
-            <hr>
             {{/each}}
         </div>
         
