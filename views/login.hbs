@@ -6,7 +6,7 @@
         <strong>Login failed.</strong> {{has_errors}}
     {{/if}}
     <!-- Login/Register Form -->
-    <form action="/login" method="post">
+    <form action="/auth/login" method="post">
         <div class="register-container">
             <h2>Login to Your Account</h2>
             <div class="form-group">
@@ -23,7 +23,7 @@
     </form>
     <div class="register-note">
         <span>Don't have an account?</span>
-        <a href="/register">Register</a>
+        <a href="/auth/register">Register</a>
     </div>
     </div>
     <!-- Social Media Login Section -->

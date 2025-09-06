@@ -1,9 +1,9 @@
 <div class="register-page">
         <div class="register-container">
-            <form action="/register" method="POST">
+            <form action="/auth/register" method="POST">
                 <h2>Register Account</h2>
                 <div class="form-group">
-                    <label for="username">Username-For login</label>
+                    <label for="username">Username (for login)</label>
                     <input type="text" id="username" name="username" placeholder="Enter username" required>
                 </div>
                 <div class="form-group">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="btn-container">
                     <button type="submit" class="btn btn-primary" >Create Account</button>
-                    <button class="btn btn-secondary" onclick="window.location.href ='http://localhost:3000/login';">Already have an account</button>
+                    <button class="btn btn-secondary" onclick="window.location.href ='http://localhost:3000/auth/login';">Already have an account</button>
                 </div>
             </form>
         </div>

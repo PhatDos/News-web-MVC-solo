@@ -1,58 +1,84 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { User } from "../Models/user.js"; // Assuming the userSchema is in the 'models/user.js' file
+import { User } from "../Models/user.js";
 
-// Secret key for JWT
-const JWT_SECRET = "secret";
-// Register Route
-export async function register(username, email, phone, loginName, password) {
+const JWT_SECRET = process.env.JWT_SECRET || "SECRET_KEY";
+
+// [POST] /auth/register
+export async function register(req, res) {
   try {
-    // Check if the user already exists
-    const userExists = await User.findOne({ username });
-    if (userExists) {
-      return res.status(400).json({ message: "Username already taken" });
+    const { username, password, confirm_password, email, full_name } = req.body;
+
+    if (password !== confirm_password) {
+      return res.status(400).send("Confirm password different from password");
+    }
+
+    const existUser = await User.findOne({ username }).lean();
+    if (existUser) {
+      return res.status(400).send("Username already existed!");
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    // Create a new user
     const newUser = new User({
       username,
       email,
-      phone,
-      loginName,
-      password
+      full_name,
+      password: hashedPassword
     });
 
-    // Save the new user
     await newUser.save();
-    res.status(201).json({ message: "User registered successfully" });
+    res.render("login", { message: "Register successfully!" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Server error" });
+    res.status(500).send("Error registering user");
   }
 }
 
-export async function login(username, password) {
+// [POST] /auth/login
+export async function login(req, res) {
   try {
-    const user = await User.findOne({ username });
+    const { username, password } = req.body;
+
+    const user = await User.findOne({ username }).lean();
     if (!user) {
-      return { status: 400, message: "Invalid username or password" };
-    }
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return { status: 400, message: "Invalid username or password" };
+      return res.render("login", { has_errors: "Username's invalid" });
     }
 
-    const token = jwt.sign(
-      { userId: user._id, username: user.username, role: user.role },
-      JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+    if (!bcrypt.compareSync(password, user.password)) {
+      return res.render("login", { has_errors: "Wrong password" });
+    }
 
-    return { status: 200, token, role: user.role };
+    // Lưu session
+    req.session.auth = true;
+    req.session.authUser = user;
+
+    if (user.role === "administrator") req.session.retUrl = "administrator";
+    else if (user.role === "writer") req.session.retUrl = "writer";
+    else if (user.role === "editor") req.session.retUrl = "editor";
+    else req.session.retUrl = "/";
+
+    res.redirect(req.session.retUrl);
   } catch (err) {
     console.error(err);
-    return { status: 500, message: "Server error" };
+    res.status(500).send("Error login");
   }
+}
+
+// [POST] /auth/logout
+export async function logout(req, res) {
+  req.session.auth = false;
+  req.session.authUser = null;
+  req.session.retUrl = null;
+  req.session.role = null;
+  res.redirect("/");
+}
+
+// [GET] /auth/login
+export function renderLogin(req, res) {
+  res.render("login", { auth: req.session.auth });
+}
+
+// [GET] /auth/register
+export function renderRegister(req, res) {
+  res.render("register");
 }

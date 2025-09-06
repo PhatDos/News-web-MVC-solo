@@ -75,8 +75,8 @@
             <div class="child_nav_right">
                 <ul style="margin-bottom: 0px;">
                     <li><a href="/writer/articles">Articles of writer</a></li>
-                    {{!-- <li><a href="/subscribe"button type="button" class="btn btn-outline-danger">Subscribe</button></a></li>
-                    <li><a href="/latest">Latest</a></li> --}}
+                    {{!-- <li><a href="/subscribe"button type="button" class="btn btn-outline-danger">Subscribe</button></a></li> --}}
+                    <li><a href="/latest">Latest</a></li> 
                     <li>
                         <form class="d-flex" role="search" action="/search" method="get">
                             <input class="me-2 search" name="q" type="search" placeholder="Search" aria-label="Search">
@@ -93,7 +93,7 @@
                     <div class="hello ms-2"> 
                         <li style="font-size: 25px; margin-left:15px;">Hello {{authUser.username}} </li>
                         <li class="logout">
-                            <form id="frmLogout" action="/logout" method="post"></form>
+                            <form id="frmLogout" action="/auth/logout" method="post"></form>
                             <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
                                 Log out
                                 <i class="bi bi-box-arrow-right ms-2"></i>
@@ -103,7 +103,7 @@
                     {{/if}}
                     {{#if auth}}
                     {{else}}
-                    <li><a href="/login">Log In</a></li>
+                    <li><a href="/auth/login">Log In</a></li>
                     {{/if}}
                 </ul>
             </div>
@@ -263,7 +263,7 @@
         </ul>
     </nav>
 
-    {{{body}}}
+    <main style="background-color: #f4f4f4;">{{{body}}}</main>
 
     <footer>
         <div class="footer_container">
