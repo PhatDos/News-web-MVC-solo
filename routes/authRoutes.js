@@ -9,11 +9,19 @@ import {
 
 const router = Router();
 
-router.get("/login", renderLogin);
-router.post("/login", login);
+// middleware kiểm tra đã login
+function redirectIfAuth(req, res, next) {
+  if (req.session && req.session.auth) {
+    return res.redirect("/"); // hoặc req.session.retUrl
+  }
+  next();
+}
 
-router.get("/register", renderRegister);
-router.post("/register", register);
+router.get("/login", redirectIfAuth, renderLogin);
+router.post("/login", redirectIfAuth, login);
+
+router.get("/register", redirectIfAuth, renderRegister);
+router.post("/register", redirectIfAuth, register);
 
 router.post("/logout", logout);
 

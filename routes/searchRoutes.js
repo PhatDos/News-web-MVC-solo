@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
   if (!query.trim()) {
     return res.render("list", {
       CategoryName: "Search Results",
-      des: "No results found. Please try another query.",
+      des: "Enter a valid search query",
       article: [],
       newest5Articles: await articleController.getTop5NewestArticles()
     });

@@ -29,6 +29,7 @@ router.get("/", async (req, res) => {
       await articleController.getLatestArticleFromEachCategory();
     const popularArticles =
       await articleController.getPopularArticlesThisWeek();
+    const newest5Articles = await articleController.getTop5NewestArticles();
 
     const articles = popularArticles.slice(0, 3);
 
@@ -38,7 +39,8 @@ router.get("/", async (req, res) => {
       article3: articles[2],
       topViewedArticles,
       newestArticles,
-      latestArticlesFromCategories
+      latestArticlesFromCategories,
+      newest5Articles
     });
   } catch (error) {
     console.error("Error loading home page:", error);
@@ -48,28 +50,36 @@ router.get("/", async (req, res) => {
 
 // Details
 router.get("/details", async (req, res) => {
-  const id = req.query.id || 0;
-  const data = await articleController.getArticleById(id);
-  if (!data) return res.send("No data");
+  try {
+    const id = req.query.id || 0;
+    const data = await articleController.getArticleById(id);
+    if (!data) return res.send("No data");
 
-  const category = await categoryController.getCategoryByName(
-    data.category.name
-  );
-  const articles = await Article.find({
-    category: category._id,
-    status: "published"
-  })
-    .limit(5)
-    .lean();
+    const category = await categoryController.getCategoryByName(
+      data.category.name
+    );
+    const articles = await Article.find({
+      category: category._id,
+      status: "published"
+    })
+      .limit(5)
+      .lean();
 
-  const embedUrls = convertToEmbedUrls(data.video_url);
-  await articleController.incrementView(id);
+    const embedUrls = convertToEmbedUrls(data.video_url);
+    await articleController.incrementView(id);
 
-  res.render("details", {
-    article: data,
-    newest5Articles: articles,
-    video_url: embedUrls
-  });
+    const newest5Articles = await articleController.getTop5NewestArticles();
+
+    res.render("details", {
+      article: data,
+      newest5Articles,
+      video_url: embedUrls,
+      newest5ArticlesRight: articles
+    });
+  } catch (error) {
+    console.error("Error loading details:", error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 export default router;

@@ -65,8 +65,9 @@ h6 {
 }
 
 .item.newsblock img {
-  height: 210px;
+  height: 300px;
   width: auto;
+  object-fit: cover;
 }
 
 .newsblock-text_cate {
@@ -113,7 +114,7 @@ h6 {
 }
 
 .carousel-title {
-  padding: 15px 0 15px 30px;
+  padding: 25px 0 15px 30px;
   font-size: 35px;
 }
 
@@ -166,8 +167,9 @@ a img {
 }
 
 .rm {
-  position: relative;
-  left: 17%;
+  position: absolute;
+  /* left: 17%; */
+  right: 10%;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 

@@ -97,11 +97,6 @@
   margin-bottom: 10px;
 }
 
-.container .list img {
-  width: auto;
-  height: 80px;
-}
-
 .container blockquote {
   font-size: 23px; /* Increased to 23px */
   padding: 10px 30px;
@@ -147,6 +142,20 @@
   justify-content: flex-end;
   margin-right: 80px;
   font-size: 14px;
+}
+
+.container .list img {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.title {
+  display: -webkit-box; /* cần cho line-clamp */
+  -webkit-line-clamp: 1; /* giới hạn 2 dòng */
+  -webkit-box-orient: vertical;
+  overflow: hidden; /* ẩn phần dư */
+  text-overflow: ellipsis; /* thêm dấu ... */
 }
 
 .title:hover {

@@ -17,7 +17,7 @@ router.get("/articles", isWriter, async (req, res) => {
 
   res.render("articleOfWriter", {
     article: data,
-    usernamee: req.session.authUser.username
+    username: req.session.authUser.username
   });
 });
 

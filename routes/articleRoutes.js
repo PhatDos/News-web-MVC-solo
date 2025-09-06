@@ -87,41 +87,6 @@ router.post("/reject", isEditor, async (req, res) => {
   res.redirect("/editor");
 });
 
-// Search
-router.get("/search", async (req, res) => {
-  const query = req.query.q || "";
-  if (!query.trim()) {
-    return res.render("list", {
-      CategoryName: "Search Results",
-      des: "No results found. Please try another query.",
-      article: [],
-      newest5Articles: await articleController.getTop5NewestArticles()
-    });
-  }
-
-  const articles = await Article.find({
-    $and: [
-      { status: "published" },
-      {
-        $or: [
-          { title: { $regex: query, $options: "i" } },
-          { content: { $regex: query, $options: "i" } }
-        ]
-      }
-    ]
-  })
-    .populate("category")
-    .populate("tags")
-    .lean();
-
-  res.render("list", {
-    CategoryName: "Search Results",
-    des: `Showing results for: "${query}"`,
-    article: articles,
-    newest5Articles: await articleController.getTop5NewestArticles()
-  });
-});
-
 // Latest articles
 router.get("/latest", async (req, res) => {
   const articles = await articleController.getTop10NewestArticles();

@@ -2,6 +2,7 @@ import { Router } from "express";
 import { categoryController } from "../Controllers/category.js";
 import { Article } from "../Models/article.js";
 import { isAuth, isAdmin } from "../middleware/middleware.js";
+import { articleController } from "../Controllers/article.js";
 
 const router = Router();
 
@@ -51,6 +52,8 @@ router.get("/", async (req, res) => {
       .limit(4)
       .lean();
 
+    const newest5Articles = await articleController.getTop5NewestArticles();
+
     res.render("list", {
       article1: top4Articles[0],
       article2: top4Articles[1],
@@ -59,7 +62,7 @@ router.get("/", async (req, res) => {
       CategoryName: req.query.name,
       des: category.description,
       article: articles,
-      newest5Articles: await categoryController.getAllCategories() // hoặc truyền newest5Articles từ controller articles
+      newest5Articles
     });
   } catch (err) {
     console.error(err);

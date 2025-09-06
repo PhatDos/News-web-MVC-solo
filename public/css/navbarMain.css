@@ -1,0 +1,125 @@
+.hello .logout {
+  margin-left: 20px;
+  font-size: 35px;
+  border-radius: 8px;
+  padding: 0 12px 0 12px;
+  height: 50px;
+  line-height: 50px;
+  border: oldlace 1px solid;
+}
+.logout:hover {
+  background-color: aliceblue;
+  color: black;
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.logo {
+  height: 70px; /* Adjust the height of the logo */
+  width: auto;
+  display: block;
+}
+
+.navbar {
+  zoom: 0.8;
+  background: #232f3e;
+  font-family: calibri;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  height: 110px;
+  display: flex;
+  color: white;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nav_div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.nav_right {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.nav_left {
+  max-height: 100%; /* bằng cha navbar */
+}
+
+.nav_left ul,
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.child_nav_right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav_left ul li p {
+  margin: 0;
+  display: inline-block;
+  color: white;
+  padding-right: 10px;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search {
+  height: 40px;
+  width: 250px; /* bạn có thể đổi theo ý */
+  border-radius: 60px;
+  outline: none;
+  border: 2px solid #232f3e;
+  padding-right: 42px; /* chừa chỗ cho nút bên phải */
+  padding-left: 25px;
+  text-align: left; /* text bên trái thay vì giữa */
+}
+
+.btnSearch {
+  position: absolute;
+  right: 9px;
+  bottom: 4px;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: #232f3e;
+  cursor: pointer;
+}
+
+.navbar li {
+  color: white;
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.navbar li a {
+  color: white;
+  font-size: 25px;
+  font-weight: none;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.navbar li a:hover {
+  color: #000000; /* hover effect */
+}
