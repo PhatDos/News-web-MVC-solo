@@ -1,0 +1,49 @@
+<div class="articles-list">
+    <div class="big">
+        <div class="left col-8 mb-5">
+            {{#each article }}
+            <hr>
+            <div class="article mt-2">
+                <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="News"></a>
+                <div>
+                    <h4>{{this.title}}</h4>
+                    <p class="text-body-secondary time-elapsed update mb-0" data-updated="{{this.updatedAt}}"></p>
+                    <p>Views: {{this.views}}</p>
+                    <a href="/details?id={{this._id}}">Read More</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        {{!-- Right --}}
+        <div class="col-3">
+            <div class="right">
+                {{!-- <img style="padding-top: 5vh;"
+                    src="https://siteimages.simplified.com/blog/Screenshot-2022-10-21-at-11.51.1-1.png?auto=compress&fm=png"
+                    alt=""> --}}
+                <div style="padding-left: 40px;">
+                    <h3 class="heading-3">
+                        Top 5 Newest News
+                    </h3>
+                    <div class="lists">
+                        {{#each newest5Articles as |article|}}
+                        <div class="list" style="margin-bottom: 50px;">
+                            <a href="/details?id={{article._id}}"><img style="max-height:30vh; object-fit: cover"
+                                    src="{{article.image_url}}" alt="photo 1"></a>
+                            <h4>{{this.title}}</h4>
+                            <p class="text-body-secondary time-elapsed update mb-0"
+                                data-updated="{{article.updatedAt}}"></p>
+                            <p>Views: {{this.views}}</p>
+                            <a href="/details?id={{this._id}}">Read More</a>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{!-- Blank Middle --}}
+        <div class="col-1"></div>
+    </div>
+</div>
+
+<script src="/js/timeago.js"></script>

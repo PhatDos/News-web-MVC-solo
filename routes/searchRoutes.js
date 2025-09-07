@@ -6,34 +6,30 @@ import { articleController } from "../Controllers/article.js";
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const query = req.query.q || "";
-
-  if (!query.trim()) {
-    return res.render("list", {
-      CategoryName: "Search Results",
-      des: "Enter a valid search query",
-      article: [],
-      newest5Articles: await articleController.getTop5NewestArticles()
-    });
-  }
+  const query = req.query.q?.trim() || "";
 
   try {
+    if (!query) {
+      return res.render("search", {
+        CategoryName: "Search Results",
+        des: "No results found. Please try another query.",
+        article: [],
+        newest5Articles: await articleController.getTop5NewestArticles()
+      });
+    }
+
     const articles = await Article.find({
-      $and: [
-        { status: "published" },
-        {
-          $or: [
-            { title: { $regex: query, $options: "i" } },
-            { content: { $regex: query, $options: "i" } }
-          ]
-        }
+      status: "published",
+      $or: [
+        { title: { $regex: query, $options: "i" } },
+        { content: { $regex: query, $options: "i" } }
       ]
     })
       .populate("category")
       .populate("tags")
       .lean();
 
-    res.render("list", {
+    res.render("search", {
       CategoryName: "Search Results",
       des: `Showing results for: "${query}"`,
       article: articles,

@@ -151,8 +151,8 @@
 }
 
 .title {
-  display: -webkit-box; /* cần cho line-clamp */
-  -webkit-line-clamp: 1; /* giới hạn 2 dòng */
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* giới hạn dòng */
   -webkit-box-orient: vertical;
   overflow: hidden; /* ẩn phần dư */
   text-overflow: ellipsis; /* thêm dấu ... */
