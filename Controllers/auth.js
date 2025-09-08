@@ -52,9 +52,9 @@ export async function login(req, res) {
     req.session.auth = true;
     req.session.authUser = user;
 
-    if (user.role === "administrator") req.session.retUrl = "administrator";
-    else if (user.role === "writer") req.session.retUrl = "writer";
-    else if (user.role === "editor") req.session.retUrl = "editor";
+    if (user.role === "administrator") req.session.retUrl = "/administrator";
+    else if (user.role === "writer") req.session.retUrl = "/writer";
+    else if (user.role === "editor") req.session.retUrl = "/editor";
     else req.session.retUrl = "/";
 
     res.redirect(req.session.retUrl);

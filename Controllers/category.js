@@ -1,6 +1,5 @@
-import { Category } from "../Models/category.js"; // Assuming the Category model is in 'models/category.js'
+import { Category } from "../Models/category.js";
 
-// Create a new category
 export const categoryController = {
   createCategory: async (name, description) => {
     try {

@@ -48,7 +48,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Details
 router.get("/details", async (req, res) => {
   try {
     const id = req.query.id || 0;
@@ -80,6 +79,10 @@ router.get("/details", async (req, res) => {
     console.error("Error loading details:", error);
     res.status(500).send("Internal Server Error");
   }
+});
+
+router.get("/about", (req, res) => {
+  res.render("about");
 });
 
 export default router;

@@ -7,23 +7,21 @@ import { userController } from "../Controllers/user.js";
 
 const router = express.Router();
 
-// Trang quản trị
-router.get("/administrator", isAuth, isAdmin, async (req, res) => {
+router.get("/", isAuth, isAdmin, async (req, res) => {
   try {
-    const allCategories = await categoryController.getAllCategories();
-    const allTags = await tagController.getAllTags();
-    const getPendingArticles = await articleController.getPendingArticles();
-    const getAllUsers = await userController.getAllUsers();
-    const getEditorsOnly = await userController.getEditorsOnly();
-    const getAllCategories = await categoryController.getAllCategories();
+    const categories = await categoryController.getAllCategories();
+    const tags = await tagController.getAllTags();
+    const pendingArticles = await articleController.getPendingArticles();
+    const users = await userController.getAllUsers();
+    const editors = await userController.getEditorsOnly();
 
     res.render("administrator", {
-      allCategory: allCategories,
-      allTags,
-      getPendingArticles,
-      getAllUsers,
-      getEditorsOnly,
-      getAllCategories
+      allCategory: categories,
+      allTags: tags,
+      getPendingArticles: pendingArticles,
+      getAllUsers: users,
+      getEditorsOnly: editors,
+      getAllCategories: categories // nếu cần dùng riêng cho editorModal
     });
   } catch (error) {
     console.error("Error loading admin page:", error);

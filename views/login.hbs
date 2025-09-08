@@ -1,9 +1,9 @@
 <div class="login-body">
     {{#if message}}
-        <p>{{message}}</p>
+    <p>{{message}}</p>
     {{/if}}
     {{#if has_errors}}
-        <strong>Login failed.</strong> {{has_errors}}
+    <strong>Login failed.</strong> {{has_errors}}
     {{/if}}
     <!-- Login/Register Form -->
     <form action="/auth/login" method="post">
@@ -25,6 +25,4 @@
         <span>Don't have an account?</span>
         <a href="/auth/register">Register</a>
     </div>
-    </div>
-    <!-- Social Media Login Section -->
 </div>

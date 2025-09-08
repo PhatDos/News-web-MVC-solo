@@ -1,28 +1,24 @@
+// middleware/middleware.js
+
+// Kiểm tra user đã đăng nhập chưa
 export function isAuth(req, res, next) {
-  if (req.session.auth === false) {
+  if (!req.session.auth) {
     req.session.retUrl = req.originalUrl;
-    return res.redirect("/login");
+    return res.redirect("/auth/login");
   }
   next();
 }
 
-export function isAdmin(req, res, next) {
-  if (!req.session.authUser || req.session.authUser.role !== "administrator") {
-    return res.redirect("/");
-  }
-  next();
+// Middleware tổng quát kiểm tra role
+export function verifyRole(roles = []) {
+  return (req, res, next) => {
+    if (!req.session.authUser || !roles.includes(req.session.authUser.role)) {
+      return res.redirect("/");
+    }
+    next();
+  };
 }
 
-export function isWriter(req, res, next) {
-  if (!req.session.authUser || req.session.authUser.role !== "writer") {
-    return res.redirect("/");
-  }
-  next();
-}
-
-export function isEditor(req, res, next) {
-  if (!req.session.authUser || req.session.authUser.role !== "editor") {
-    return res.redirect("/");
-  }
-  next();
-}
+export const isAdmin = verifyRole(["administrator"]);
+export const isWriter = verifyRole(["writer"]);
+export const isEditor = verifyRole(["editor"]);

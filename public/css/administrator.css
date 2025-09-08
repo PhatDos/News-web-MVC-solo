@@ -1,72 +1,65 @@
 /* Scoped styles within .admin-dashboard */
 .admin-dashboard {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-    font-size: 23px; /* Increased to 23px */
-}
-
-.admin-dashboard header {
-    background-color: #232F3E;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    font-size: 23px; /* Increased to 23px */
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0 30px;
+  font-size: 20px;
 }
 
 .admin-dashboard main {
-    padding: 2rem;
-    font-size: 23px; /* Increased to 23px */
+  padding: 2rem;
+  font-size: 20px;
 }
 
 .admin-dashboard section {
-    margin-bottom: 2rem;
-    font-size: 23px; /* Increased to 23px */
+  margin-bottom: 2rem;
+  font-size: 20px;
 }
 
 .admin-dashboard h2 {
-    border-bottom: 2px solid #333;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 23px; /* Increased to 23px */
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 20px;
 }
 
 .admin-dashboard table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-    font-size: 23px; /* Increased to 23px */
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  font-size: 20px;
 }
 
-.admin-dashboard table th, .admin-dashboard table td {
-    border: 1px solid #ddd;
-    padding: 0.5rem;
-    text-align: left;
-    font-size: 23px; /* Increased to 23px */
+.admin-dashboard table th,
+.admin-dashboard table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 20px;
 }
 
 .admin-dashboard table th {
-    background-color: #f4f4f4;
+  background-color: #f4f4f4;
 }
 
 .admin-dashboard button {
-    padding: 0.5rem 1rem;
-    border: none;
-    background-color: #131A22;
-    color: white;
-    cursor: pointer;
-    margin-right: 0.5rem;
-    font-size: 23px; /* Increased to 23px */
+  padding: 0.5rem 1rem;
+  border: none;
+  background-color: #131a22;
+  color: white;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-size: 20px;
 }
 
 .admin-dashboard button:hover {
-    background-color: #232F3E;
+  background-color: #232f3e;
 }
 
 .admin-dashboard select {
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    background-color: white;
-    font-size: 23px; /* Increased to 23px */
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  background-color: white;
+  font-size: 20px;
 }
