@@ -2,7 +2,6 @@ import { Article } from "../Models/article.js"; // Adjust according to your mode
 import { Category } from "../Models/category.js";
 import { User } from "../Models/user.js";
 import { Tag } from "../Models/tag.js";
-import mongoose from "mongoose";
 
 export const articleController = {
   publishArticle: async (articleId) => {
@@ -15,7 +14,7 @@ export const articleController = {
       const updatedArticle = await Article.findByIdAndUpdate(
         articleId,
         { status: "published", rejectionNote: null }, // Nullify rejection note if publishing
-        { new: true }
+        { new: true },
       )
         .populate("category")
         .populate("tags")
@@ -40,7 +39,7 @@ export const articleController = {
       const updatedArticle = await Article.findByIdAndUpdate(
         articleId,
         { status: "rejected", rejectionNote: note }, // Set rejection note
-        { new: true }
+        { new: true },
       )
         .populate("category")
         .populate("tags")
@@ -75,7 +74,7 @@ export const articleController = {
       // Lấy các bài viết ở trạng thái pending thuộc avaiCategory của user
       const articles = await Article.find({
         status: "pending",
-        category: { $in: user.avaiCategory }
+        category: { $in: user.avaiCategory },
       })
         .populate("category")
         .populate("tags")
@@ -104,7 +103,7 @@ export const articleController = {
 
     const articles = await Article.find({
       status: "published",
-      createdAt: { $gte: lastWeekDate }
+      createdAt: { $gte: lastWeekDate },
     })
       .sort({ views: -1 }) // Sort by views descending
       .limit(4) // Get top 4 articles
@@ -156,7 +155,7 @@ export const articleController = {
     for (const category of categories) {
       const article = await Article.findOne({
         category: category._id,
-        status: "published"
+        status: "published",
       })
         .sort({ createdAt: -1 }) // Sort by creation date descending
         .populate("category")
@@ -199,7 +198,7 @@ export const articleController = {
       const searchRegex = new RegExp(query, "i"); // Case-insensitive regex
       const articles = await Article.find({
         status: "published", // Ensure only published articles are returned
-        $or: [{ title: searchRegex }, { content: searchRegex }]
+        $or: [{ title: searchRegex }, { content: searchRegex }],
       })
         .populate("category")
         .populate("tags")
@@ -238,10 +237,10 @@ export const articleController = {
     try {
       const article = await Article.updateOne(
         { _id: id },
-        { $inc: { views: 1 } }
+        { $inc: { views: 1 } },
       );
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };

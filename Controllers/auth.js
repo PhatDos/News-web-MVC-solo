@@ -23,7 +23,7 @@ export async function register(req, res) {
       username,
       email,
       full_name,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
     await newUser.save();

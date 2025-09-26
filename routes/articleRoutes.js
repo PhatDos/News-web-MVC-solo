@@ -2,7 +2,7 @@ import express from "express";
 import { Article } from "../Models/article.js";
 import { articleController } from "../Controllers/article.js";
 import { categoryController } from "../Controllers/category.js";
-import { isWriter, isEditor } from "../middleware/middleware.js";
+import { isWriter, isEditor } from "../middlewares/auth.js";
 
 const router = express.Router();
 
@@ -28,11 +28,11 @@ router.get("/details", async (req, res) => {
   if (!data) return res.send("No data");
 
   const category = await categoryController.getCategoryByName(
-    data.category.name
+    data.category.name,
   );
   const articles = await Article.find({
     category: category._id,
-    status: "published"
+    status: "published",
   })
     .limit(5)
     .lean();
@@ -43,7 +43,7 @@ router.get("/details", async (req, res) => {
   res.render("details", {
     article: data,
     newest5Articles: articles,
-    video_url: embedUrls
+    video_url: embedUrls,
   });
 });
 
@@ -62,11 +62,11 @@ router.post("/submit", isWriter, async (req, res) => {
       tags: req.body.tags || [],
       createdAt: new Date(),
       updatedAt: new Date(),
-      views: 0
+      views: 0,
     });
     await newArticle.save();
     res.send(
-      '<script>alert("Article saved successfully"); window.location.href="/";</script>'
+      '<script>alert("Article saved successfully"); window.location.href="/";</script>',
     );
   } catch (err) {
     console.error(err);
@@ -82,7 +82,7 @@ router.post("/approve", isEditor, async (req, res) => {
 router.post("/reject", isEditor, async (req, res) => {
   await articleController.rejectArticle(
     req.body.articleIdReject,
-    req.body.rejectNote
+    req.body.rejectNote,
   );
   res.redirect("/editor");
 });
@@ -95,7 +95,7 @@ router.get("/latest", async (req, res) => {
     CategoryName: "Latest News",
     des: "Browse the latest articles published.",
     article: articles,
-    newest5Articles
+    newest5Articles,
   });
 });
 

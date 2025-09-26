@@ -9,7 +9,7 @@ function timeAgo(dateString) {
     day: 86400,
     hour: 3600,
     minute: 60,
-    second: 1
+    second: 1,
   };
 
   for (let [unit, value] of Object.entries(intervals)) {

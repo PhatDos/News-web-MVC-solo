@@ -1,4 +1,4 @@
-.hello .logout {
+.hello {
   margin-left: 20px;
   font-size: 35px;
   border-radius: 8px;
@@ -6,7 +6,20 @@
   height: 50px;
   line-height: 50px;
   border: oldlace 1px solid;
+  align-items: center;
+  justify-self: center;
+  max-width: fit-content;
 }
+
+.logout {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  border: white 1px solid;
+  border-radius: 8px;
+  padding: 3px 5px;
+}
+
 .logout:hover {
   background-color: aliceblue;
   color: black;
@@ -49,12 +62,13 @@ body {
 
 .nav_right {
   display: flex;
+  /* flex: 1; */
   align-items: center;
   margin-right: 30px;
 }
 
 .nav_left {
-  max-height: 100%; /* bằng cha navbar */
+  max-height: 100%;
 }
 
 .nav_left ul,
@@ -80,18 +94,19 @@ ul {
 
 .search-container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  flex: 1;
 }
 
 .search {
   height: 40px;
-  width: 250px; /* bạn có thể đổi theo ý */
+  width: 100%;
   border-radius: 60px;
   outline: none;
   border: 2px solid #232f3e;
-  padding-right: 42px; /* chừa chỗ cho nút bên phải */
+  padding-right: 42px;
   padding-left: 25px;
-  text-align: left; /* text bên trái thay vì giữa */
+  text-align: left;
 }
 
 .btnSearch {
@@ -108,7 +123,6 @@ ul {
 .navbar li {
   color: white;
   list-style: none;
-  display: inline-block;
   margin-right: 10px;
 }
 

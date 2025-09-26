@@ -10,7 +10,6 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
@@ -20,8 +19,8 @@ app.engine(
   "hbs",
   engine({
     extname: "hbs",
-    helpers: { section: hbs_section() }
-  })
+    helpers: { section: hbs_section() },
+  }),
 );
 app.set("view engine", "hbs");
 app.set("views", "./views");
@@ -33,24 +32,24 @@ app.use(
     secret: process.env.SESSION_SECRET || "SECRET_KEY",
     resave: false,
     saveUninitialized: true,
-    cookie: {}
-  })
+    cookie: {},
+  }),
 );
 
-// 🔑 Middleware global
 app.use((req, res, next) => {
   res.locals.auth = req.session.auth || false;
   res.locals.authUser = req.session.authUser || null;
+
+  res.locals.isAdmin = req.session.authUser?.role === "administrator";
+  res.locals.isWriter = req.session.authUser?.role === "writer";
+  res.locals.isEditor = req.session.authUser?.role === "editor";
   next();
 });
 
-// DB connect
 await connectDB();
 
-// Routes
 app.use("/", routes);
 
-// Start server
 app.listen(3000, () => {
   console.log("✅ Server running on http://localhost:3000");
 });

@@ -1,5 +1,5 @@
 import express from "express";
-import { isAuth, isAdmin } from "../middleware/middleware.js";
+import { isAuth, isAdmin } from "../middlewares/auth.js";
 import { categoryController } from "../Controllers/category.js";
 import { tagController } from "../Controllers/tag.js";
 import { articleController } from "../Controllers/article.js";
@@ -21,7 +21,7 @@ router.get("/", isAuth, isAdmin, async (req, res) => {
       getPendingArticles: pendingArticles,
       getAllUsers: users,
       getEditorsOnly: editors,
-      getAllCategories: categories // nếu cần dùng riêng cho editorModal
+      getAllCategories: categories, // nếu cần dùng riêng cho editorModal
     });
   } catch (error) {
     console.error("Error loading admin page:", error);

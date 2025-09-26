@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { categoryController } from "../Controllers/category.js";
 import { Article } from "../Models/article.js";
-import { isAuth, isAdmin } from "../middleware/middleware.js";
+import { isAuth, isAdmin } from "../middlewares/auth.js";
 import { articleController } from "../Controllers/article.js";
 
 const router = Router();
@@ -41,12 +41,12 @@ router.get("/", async (req, res) => {
 
     const articles = await Article.find({
       category: category._id,
-      status: "published"
+      status: "published",
     }).lean();
 
     const top4Articles = await Article.find({
       category: category._id,
-      status: "published"
+      status: "published",
     })
       .sort({ views: -1 })
       .limit(4)
@@ -62,7 +62,7 @@ router.get("/", async (req, res) => {
       CategoryName: req.query.name,
       des: category.description,
       article: articles,
-      newest5Articles
+      newest5Articles,
     });
   } catch (err) {
     console.error(err);

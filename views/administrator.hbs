@@ -58,34 +58,6 @@
         </tbody>
       </table>
     </section>
-    <section id="articles">
-      <h2>Manage Articles</h2>
-      <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#tagModal"
-        data-bs-whatever="@fat">Add Article</button>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each getPendingArticles}}
-          <tr>
-
-            <td>{{this.title}}</td>
-            <td>{{this.status}}</td>
-            <td>
-              <button>View</button>
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </section>
     <section id="editor">
       <h2>Manage editor</h2>
       <table>
@@ -115,7 +87,7 @@
       </table>
     </section>
     <section id="users">
-      <h2>Manage Users</h2>
+      <h2>Manage Member</h2>
       <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#userModal"
         data-bs-whatever="@getbootstrap">Add user</button>
       <table>
@@ -139,6 +111,33 @@
               <form action="/user/delete/{{this._id}}" method="post" style="display: inline;">
                 <button>Delete</button>
               </form>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </section>
+    {{!-- Articles --}}
+    <section id="articles">
+      <h2>Manage Articles</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each getPendingArticles}}
+          <tr>
+
+            <td>{{this.title}}</td>
+            <td>{{this.status}}</td>
+            <td>
+              <button>View</button>
+              <button>Edit</button>
+              <button>Delete</button>
             </td>
           </tr>
           {{/each}}

@@ -4,7 +4,7 @@ import {
   login,
   logout,
   renderLogin,
-  renderRegister
+  renderRegister,
 } from "../Controllers/auth.js";
 
 const router = Router();

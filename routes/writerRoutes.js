@@ -4,7 +4,7 @@ import { Article } from "../Models/article.js";
 import { articleController } from "../Controllers/article.js";
 import { categoryController } from "../Controllers/category.js";
 import { tagController } from "../Controllers/tag.js";
-import { isWriter, verifyRole } from "../middleware/middleware.js";
+import { isWriter, verifyRole } from "../middlewares/auth.js";
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.get("/", isWriter, async (req, res) => {
 
   res.render("writer", {
     category,
-    tag
+    tag,
   });
 });
 
@@ -28,13 +28,13 @@ router.get("/articles", isWriter, async (req, res) => {
     return res.render("articleOfWriter", {
       article: [],
       username: req.session.authUser.username,
-      message: "No articles found"
+      message: "No articles found",
     });
   }
 
   res.render("articleOfWriter", {
     article: data,
-    username: req.session.authUser.username
+    username: req.session.authUser.username,
   });
 });
 
@@ -49,14 +49,14 @@ router.post(
         content: req.body.content,
         image_url: req.body.image_url || [], // Mảng ảnh
         video_url: req.body.video_url || [], // Mảng video
-        premium: req.body.premium === "true", // Boolean
+        premium: req.body.premium === "true",
         status: "pending",
         author: req.session.authUser._id, // ID người viết từ session
         category: req.body.category,
         tags: req.body.tags || [], // Mảng tags
         createdAt: new Date(),
         updatedAt: new Date(),
-        views: 0
+        views: 0,
       });
 
       await newArticle.save();
@@ -67,7 +67,7 @@ router.post(
       console.error("Error saving article:", err);
       res.status(500).send("Error saving article");
     }
-  }
+  },
 );
 
 export default router;

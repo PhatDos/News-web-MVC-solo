@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { tagController } from "../Controllers/tag.js";
 import { Article } from "../Models/article.js";
-import { isAuth, isAdmin } from "../middleware/middleware.js";
+import { isAuth, isAdmin } from "../middlewares/auth.js";
 
 const router = Router();
 
@@ -40,12 +40,12 @@ router.get("/", async (req, res) => {
 
     const articles = await Article.find({
       tags: tag._id,
-      status: "published"
+      status: "published",
     }).lean();
 
     res.render("listTag", {
       TagName: tag.name,
-      article: articles
+      article: articles,
     });
   } catch (err) {
     console.error(err);

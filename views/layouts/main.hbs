@@ -40,6 +40,30 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Include CKEditor script -->
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+
+    <style>
+        @media (max-width: 767px) {
+            .latest_link {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 1220px) {
+            .date_now {
+                display: none !important;
+            }
+
+            .nav_right {
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .child_nav_right {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -52,7 +76,7 @@
                             src="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/newspaper_news_rss_vector-1024.png"
                             alt="Gr6'S News Logo" class="logo"></a>
                 </li>
-                <li>
+                <li class="date_now">
                     <p>
                     <p style="font-size: 30px;" id="datetime"></p>
                     <script>
@@ -72,10 +96,21 @@
         </div>
         <div class="nav_right">
             <div class="child_nav_right">
-                <ul style="margin-bottom: 0px;">
-                    <li><a href="/writer/articles">Articles of writer</a></li>
-                    <li><a href="/latest">Latest</a></li>
-                    <li>
+                <ul style="justify-content: space-around;margin-bottom: 0px;width: 100%;">
+                    {{#if isWriter}}
+                    <li><a href="/writer">Articles of writer</a></li>
+                    {{/if}}
+
+                    {{#if isAdmin}}
+                    <li><a href="/administrator">Admin Dashboard</a></li>
+                    {{/if}}
+
+                    {{#if isEditor}}
+                    <li><a href="/editor">Editor Panel</a></li>
+                    {{/if}}
+                    <li class="latest_link"><a href="/latest">Latest</a></li>
+                    {{!-- Search --}}
+                    <li style="max-width: 400px;flex: 1;">
                         <form class="search-container" role="search" action="/search" method="get">
                             <input class="search" name="q" type="search" placeholder="Search" aria-label="Search">
                             <button class="btnSearch" type="submit">
@@ -88,19 +123,16 @@
                         </form>
                     </li>
                     {{#if auth}}
-                    <div class="hello ms-2">
-                        <li style="font-size: 25px; margin-left:15px;">Hello {{authUser.username}}</li>
-                        <li class="logout">
-                            <form id="frmLogout" action="/auth/logout" method="post"></form>
-                            <a class="dropdown-item" href="javascript: $('#frmLogout').submit()">
-                                Log out <i class="bi bi-box-arrow-right ms-2"></i>
-                            </a>
-                        </li>
-                    </div>
+                    <li style="font-size:25px; margin-left:15px;">Hello {{authUser.full_name}}</li>
+                    <li class="logout">
+                        <form id="frmLogout" action="/auth/logout" method="post"></form>
+                        <a href="javascript: $('#frmLogout').submit()">
+                            Log out <i class="bi bi-box-arrow-right ms-2"></i>
+                        </a>
+                    </li>
                     {{else}}
                     <li><a href="/auth/login">Log In</a></li>
                     {{/if}}
-
                 </ul>
             </div>
         </div>

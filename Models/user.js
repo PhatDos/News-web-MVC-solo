@@ -1,10 +1,16 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true },
+  username: { type: String, required: true, unique: true, trim: true },
   password: { type: String, required: true },
-  email: { type: String, required: true },
-  full_name: { type: String, required: true },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+  },
+  full_name: { type: String, required: true, trim: true },
   role: {
     type: String,
     enum: ["guest", "subscriber", "writer", "editor", "administrator"],
@@ -15,7 +21,7 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: () => {
       const date = new Date();
-      date.setFullYear(date.getFullYear() + 1); // Cộng thêm 1 năm
+      date.setFullYear(date.getFullYear() + 1);
       return date;
     },
   },
