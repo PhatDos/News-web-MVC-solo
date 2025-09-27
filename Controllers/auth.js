@@ -1,5 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+
+import transporter from "../config/nodemailer.js";
 import { User } from "../Models/user.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "SECRET_KEY";
@@ -81,4 +83,85 @@ export function renderLogin(req, res) {
 // [GET] /auth/register
 export function renderRegister(req, res) {
   res.render("register");
+}
+
+// [GET] /auth/forgot
+export function renderForgot(req, res) {
+  res.render("forgot");
+}
+
+// [POST] /auth/forgot
+export async function forgot(req, res) {
+  try {
+    const { email } = req.body;
+    const user = await User.findOne({ email }).lean();
+
+    if (!user) {
+      return res.render("forgot", { has_errors: "Email not found" });
+    }
+
+    // Tạo token reset (có hạn 5 phút)
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "5m" });
+
+    // Lấy domain hiện tại từ request
+    const baseUrl = req.protocol + "://" + req.get("host");
+    const resetLink = `${baseUrl}/auth/reset/${token}`;
+
+    // gửi email
+    await transporter.sendMail({
+      from: `"Support" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: "Password Reset Request(News web)",
+      html: `
+        <p>Hello ${user.full_name || "user"},</p>
+        <p>Click the link below to reset your password (valid 5 minutes):</p>
+        <a href="${resetLink}">${resetLink}</a>
+      `,
+    });
+
+    return res.render("forgot", {
+      message: "Reset link has been sent to your email.",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error sending reset link");
+  }
+}
+
+// [GET] /auth/reset/:token
+export function renderReset(req, res) {
+  const { token } = req.params;
+  res.render("reset", { token });
+}
+
+// [POST] /auth/reset/:token
+export async function resetPassword(req, res) {
+  try {
+    const { token } = req.params;
+    const { password, confirm_password } = req.body;
+
+    if (password !== confirm_password) {
+      return res.render("reset", {
+        has_errors: "Passwords do not match",
+        token,
+      });
+    }
+
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.render("reset", { has_errors: "Invalid or expired token" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
+    await user.save();
+
+    return res.render("login", {
+      message: "Password reset successful! Please log in.",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error reset password");
+  }
 }

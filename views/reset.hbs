@@ -1,0 +1,27 @@
+<div class="login-body">
+    {{#if has_errors}}
+    <strong>Error:</strong> {{has_errors}}
+    {{/if}}
+
+    <div class="register-container">
+        <form action="/auth/reset/{{token}}" method="post">
+            <h2>Reset Password</h2>
+            <div class="form-group">
+                <label for="password">New password</label>
+                <input type="password" id="password" name="password" placeholder="Enter new password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm password</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm new password"
+                    required>
+            </div>
+            <div class="btn-container">
+                <button class="btn btn-primary" type="submit">Reset Password</button>
+            </div>
+        </form>
+
+        <div class="register-note">
+            <a href="/auth/login">Back to login</a>
+        </div>
+    </div>
+</div>

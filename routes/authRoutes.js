@@ -5,14 +5,18 @@ import {
   logout,
   renderLogin,
   renderRegister,
+  renderForgot,
+  forgot,
+  renderReset,
+  resetPassword,
 } from "../Controllers/auth.js";
 
 const router = Router();
 
-// middleware kiểm tra đã login
+// Nếu đã login thì không vào login/register/forgot/reset
 function redirectIfAuth(req, res, next) {
   if (req.session && req.session.auth) {
-    return res.redirect("/"); // hoặc req.session.retUrl
+    return res.redirect("/");
   }
   next();
 }
@@ -22,6 +26,12 @@ router.post("/login", redirectIfAuth, login);
 
 router.get("/register", redirectIfAuth, renderRegister);
 router.post("/register", redirectIfAuth, register);
+
+router.get("/forgot", redirectIfAuth, renderForgot);
+router.post("/forgot", redirectIfAuth, forgot);
+
+router.get("/reset/:token", redirectIfAuth, renderReset);
+router.post("/reset/:token", redirectIfAuth, resetPassword);
 
 router.post("/logout", logout);
 
