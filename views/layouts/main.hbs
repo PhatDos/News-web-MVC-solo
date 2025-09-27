@@ -40,30 +40,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Include CKEditor script -->
     <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
-
-    <style>
-        @media (max-width: 767px) {
-            .latest_link {
-                display: none !important;
-            }
-        }
-
-        @media (max-width: 1220px) {
-            .date_now {
-                display: none !important;
-            }
-
-            .nav_right {
-                flex: 1;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .child_nav_right {
-                width: 100%;
-            }
-        }
-    </style>
+    <!-- Logo cho footer -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 
 <body>
@@ -71,12 +49,13 @@
     <nav class="navbar" style="flex-wrap: nowrap;">
         <div class="nav_left">
             <ul style="margin-bottom: 0px;">
+                {{!-- Logo --}}
                 <li class="nav_brand" style="height: 70px;">
                     <a href="/" class="d-inline-block"><img
                             src="https://cdn2.iconfinder.com/data/icons/flat-style-svg-icons-part-1/512/newspaper_news_rss_vector-1024.png"
                             alt="Gr6'S News Logo" class="logo"></a>
                 </li>
-                <li class="date_now">
+                <li class="{{#if auth}}date_now{{else}}no_date_now{{/if}}">
                     <p>
                     <p style="font-size: 30px;" id="datetime"></p>
                     <script>
@@ -303,22 +282,36 @@
             </div>
             <div class="footr_details_one">
                 <h3>Connect with Us</h3>
-                <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
-                <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
-                <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
+                <p><a href="https://www.facebook.com/congdongvnexpress">
+                        <i class="fab fa-facebook-square"></i> Facebook
+                    </a></p>
+                <p><a href="https://x.com/vietnamenglish">
+                        <i class="fab fa-twitter-square"></i> Twitter
+                    </a></p>
+                <p><a href="https://www.instagram.com/vnexpress.official/">
+                        <i class="fab fa-instagram-square"></i> Instagram
+                    </a></p>
             </div>
             <div class="footr_details_one forres">
                 <h3>Make Money with Us</h3>
-                <p><a href="https://www.facebook.com/congdongvnexpress">Facebook</a></p>
-                <p><a href="https://x.com/vietnamenglish">Twitter</a></p>
-                <p><a href="https://www.instagram.com/vnexpress.official/">Instagram</a></p>
+                <p><a href="https://www.facebook.com/congdongvnexpress">
+                        <i class="fab fa-facebook-square"></i> Facebook
+                    </a></p>
+                <p><a href="https://x.com/vietnamenglish">
+                        <i class="fab fa-twitter-square"></i> Twitter
+                    </a></p>
+                <p><a href="https://www.instagram.com/vnexpress.official/">
+                        <i class="fab fa-instagram-square"></i> Instagram
+                    </a></p>
             </div>
         </div>
+
         <div class="lastdetails">
-            <p>Conditions of Use & Sale &nbsp; &nbsp;&nbsp; Privacy Notice &nbsp; &nbsp;&nbsp; Interest-Based
-                Ads &nbsp; &nbsp;&nbsp; © 2024-{year}, Inc. or its affiliates</p>
+            <p>Conditions of Use & Sale &nbsp;&nbsp;&nbsp; Privacy Notice &nbsp;&nbsp;&nbsp; Interest-Based Ads
+                &nbsp;&nbsp;&nbsp; © 2024-{year}, Inc. or its affiliates</p>
         </div>
     </footer>
+
     <!--Owl SLick-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="

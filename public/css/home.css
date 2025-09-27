@@ -6,27 +6,19 @@ body {
 }
 
 a {
-  font-size: 25px; /* Set font size for all <a> tags */
+  font-size: 25px; 
 }
 
-a,
-p,
-li,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 23px; /* Increased font size for text elements */
+a, p, li, h1, h2, h3, h4, h5, h6 {
+  font-size: 23px; 
 }
 
 .ellipsis {
   display: -webkit-box;
-  -webkit-line-clamp: 1; /* Số dòng hiển thị */
+  -webkit-line-clamp: 1; 
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis; /* Hiển thị "..." */
+  text-overflow: ellipsis;
 }
 
 .all_newsblock {
@@ -181,7 +173,7 @@ a img {
   padding: 0px;
   display: block;
   transition: all 0.5s;
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
 }
 
 .custom-container span {
@@ -191,7 +183,7 @@ a img {
   padding-left: 10px;
   margin-left: 10px;
   transition: padding-left 0.5s;
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
 }
 
 .custom-container a:hover span {
@@ -210,18 +202,19 @@ a img {
 
 .main-container-left > h2 {
   padding: 0px 0 15px 30px;
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
 }
 
 .main-container-left h3 {
   padding: 10px 0;
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
   font-family: var(--heading);
 }
 
 .main-container-left p {
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
   font-weight: 300;
+  margin-bottom: 0;
 }
 
 .main-container-left article {
@@ -254,7 +247,7 @@ a img {
 
 .main-container-right > h2 {
   padding: 0px 0 15px 30px;
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
 }
 
 .main-container-right article {
@@ -277,20 +270,20 @@ a img {
 
 .main-container-right h4 {
   font-weight: 300;
-  font-size: 15px; /* Increased font size */
+  font-size: 15px; 
   text-align: right;
   padding-right: 1vw;
   margin-top: 10px;
 }
 
 .main-container-right article h2 {
-  font-size: 23px; /* Increased font size */
+  font-size: 23px; 
   padding: 0px;
   font-family: var(--heading);
 }
 
 .main-container-right article p {
-  font-size: 17px; /* Increased font size */
+  font-size: 17px; 
   font-weight: 300;
 }
 
@@ -298,7 +291,7 @@ a img {
   margin-right: 10px;
 }
 
-/* Media Queries */
+/* Responsive */
 @media (max-width: 460px) {
   .main-container-right article {
     display: block;

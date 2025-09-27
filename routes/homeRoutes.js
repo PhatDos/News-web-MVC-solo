@@ -22,16 +22,14 @@ function convertToEmbedUrls(urls) {
 // Trang chủ
 router.get("/", async (req, res) => {
   try {
-    const topViewedArticles =
-      await articleController.getTop10MostViewedArticles();
     const newestArticles = await articleController.getTop10NewestArticles();
     const latestArticlesFromCategories =
       await articleController.getLatestArticleFromEachCategory();
-    const popularArticles =
-      await articleController.getPopularArticlesThisWeek();
     const newest5Articles = await articleController.getTop5NewestArticles();
 
-    const articles = popularArticles.slice(0, 3);
+    const topViewedArticles =
+      await articleController.getTop10MostViewedArticles();
+    const articles = topViewedArticles.slice(0, 3);
 
     res.render("home", {
       article1: articles[0],
@@ -40,7 +38,7 @@ router.get("/", async (req, res) => {
       topViewedArticles,
       newestArticles,
       latestArticlesFromCategories,
-      newest5Articles
+      newest5Articles,
     });
   } catch (error) {
     console.error("Error loading home page:", error);
@@ -55,11 +53,11 @@ router.get("/details", async (req, res) => {
     if (!data) return res.send("No data");
 
     const category = await categoryController.getCategoryByName(
-      data.category.name
+      data.category.name,
     );
     const articles = await Article.find({
       category: category._id,
-      status: "published"
+      status: "published",
     })
       .limit(5)
       .lean();
@@ -73,7 +71,7 @@ router.get("/details", async (req, res) => {
       article: data,
       newest5Articles,
       video_url: embedUrls,
-      newest5ArticlesRight: articles
+      newest5ArticlesRight: articles,
     });
   } catch (error) {
     console.error("Error loading details:", error);

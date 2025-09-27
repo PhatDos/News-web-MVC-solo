@@ -1,156 +1,161 @@
 <body>
-<h2 class="carousel-title" style="text-align: center;">Top 10 Newest News of All Categories</h2>
-<div class="owl-carousel owl-theme all_newsblock mb-5">
-  {{#each newestArticles as |article|}}
-  <div class="item newsblock">
-    <article>
-      <a href="/details?id={{article._id}}">
-        <img src="{{article.image_url.[0]}}" alt="{{article.title}}">
-      </a>
-      <div class="newsblock-text">
-        <a href="/details?id={{article._id}}">
-          <h2 class="mt-2 ellipsis">
-            {{article.title}}
-          </h2>
-        </a>
-        <div class="newsblock-text_cate ms-1" style="margin-bottom: 4px;">Category: {{this.category.name}}</div>
-        <div class="newsblock-text_cate ms-1"> Tags:
-          {{#each article.tags as |tag|}}
-          {{tag.name}}
-          {{/each}}
-        </div>
-        <p class="text-body-secondary time-elapsed mb-0" data-updated="{{article.updatedAt}}"></p>
-        <p class="mb-0 mt-1">Views: {{this.views}}
-          <a href="/details?id={{article._id}}" class="ms-1 rm">Read More</a>
-        </p>
-      </div>
-    </article>
-  </div>
-  {{/each}}
-</div>
-{{!-- //////////////latestArticlesFromCategories///////////////////// --}}
-
-<div data-aos="slide-up" data-aos-duration="1300" class="mb-5">
-  <h2 class="carousel-title" style="text-align: center; background-color: #1d1c1c; color:aliceblue; margin-bottom: 0px;">Top 10 Categories with 1 Newest Post</h2>
-  <div class="all_newsslide owl-carousel owl-theme">
-    {{#each latestArticlesFromCategories as |article|}}
-    <div class="item newsslide">
+  <h2 class="carousel-title" style="text-align: center;">Top 10 Newest News of All Categories</h2>
+  <div class="owl-carousel owl-theme all_newsblock mb-5">
+    {{#each newestArticles as |article|}}
+    <div class="item newsblock">
       <article>
         <a href="/details?id={{article._id}}">
-          <img class="slide_img" src="{{article.image_url.[0]}}" alt="{{article.title}}">
+          <img src="{{article.image_url.[0]}}" alt="{{article.title}}">
         </a>
-        <div class="newsslide-text">
+        <div class="newsblock-text">
           <a href="/details?id={{article._id}}">
-            <h2 class="slide_title mt-2">
+            <h2 class="mt-2 ellipsis">
               {{article.title}}
             </h2>
           </a>
-          <a href="/details?id={{article._id}}" class="text-decoration-none" style="color: rgb(174, 169, 169);">
-            <div class="ms-1" style="margin-bottom: 4px;">Category: {{this.category.name}}</div>
-            <div class="ms-1"> Tags:
-              {{#each article.tags as |tag|}}
-              {{tag.name}}
-              {{/each}}
-            </div>
-            <p class="time-elapsed update mb-0" data-updated="{{article.updatedAt}}"></p>
-            <p class="mb-0 mt-1">Views: {{this.views}}</p>
-          </a>
-          <a href="/details?id={{article._id}}" class="readmore ms-1">Read More</a>
+          <div class="newsblock-text_cate ms-1" style="margin-bottom: 4px;">Category: {{this.category.name}}</div>
+          <div class="newsblock-text_cate ms-1"> Tags:
+            {{#each article.tags as |tag|}}
+            {{tag.name}}
+            {{/each}}
+          </div>
+          <p class="text-body-secondary time-elapsed mb-0" data-updated="{{article.updatedAt}}"></p>
+          <p class="mb-0 mt-1">Views: {{this.views}}
+            <a href="/details?id={{article._id}}" class="ms-1 rm">Read More</a>
+          </p>
         </div>
       </article>
     </div>
     {{/each}}
   </div>
-</div>
+  {{!-- //////////////latestArticlesFromCategories///////////////////// --}}
 
-
-{{!-- Sau slides --}}
-<div class="custom-container container-fluid mt-2 row" data-aos="slide-up" data-aos-duration="1200">
-  <!-- Left Column -->
-  <section class="main-container-left col-7">
-    <h2 style="font-size: 35px; display: flex; justify-content: center;">Top News of the Week (3-4 news)</h2>
-
-    <!-- Top Left Container -->
-    <div class="container-top-left">
-      
-      <!-- Top Left Container (for the first article) -->
-      <div class="container-top-left-big">
+  <div data-aos="slide-up" data-aos-duration="1300" class="mb-5">
+    <h2 class="carousel-title"
+      style="text-align: center; background-color: #1d1c1c; color:aliceblue; margin-bottom: 0px;">Top 10 Categories with
+      1 Newest Post</h2>
+    <div class="all_newsslide owl-carousel owl-theme">
+      {{#each latestArticlesFromCategories as |article|}}
+      <div class="item newsslide">
         <article>
-          <a href="/details?id={{article1._id}}">
-            <img src="{{article1.image_url.[0]}}" alt="{{article1.title}}">
+          <a href="/details?id={{article._id}}">
+            <img class="slide_img" src="{{article.image_url.[0]}}" alt="{{article.title}}">
           </a>
-          <div style="padding-left: 1vw;">
-            <h2>{{article1.title}}</h2>
-            <p>Category: {{article1.category.name}}</p>
-            <p class="text-body-secondary">{{article1.updatedAt}}</p>
-            <p>Views: {{article1.views}}</p>
-            <a href="/details?id={{article1._id}}">Read More</a>
+          <div class="newsslide-text">
+            <a href="/details?id={{article._id}}">
+              <h2 class="slide_title mt-2">
+                {{article.title}}
+              </h2>
+            </a>
+            <a href="/details?id={{article._id}}" class="text-decoration-none" style="color: rgb(174, 169, 169);">
+              <div class="ms-1" style="margin-bottom: 4px;">Category: {{this.category.name}}</div>
+              <div class="ms-1"> Tags:
+                {{#each article.tags as |tag|}}
+                {{tag.name}}
+                {{/each}}
+              </div>
+              <p class="time-elapsed update mb-0" data-updated="{{article.updatedAt}}"></p>
+              <p class="mb-0 mt-1">Views: {{this.views}}</p>
+            </a>
+            <a href="/details?id={{article._id}}" class="readmore ms-1">Read More</a>
           </div>
         </article>
       </div>
-      <!-- Bottom Left Container -->
-      <!-- Bottom Left Container (for the second and third articles) -->
-      <div class="container-bottom-left">
-        <article>
-          <a href="/details?id={{article2._id}}">
-            <img src="{{article2.image_url.[0]}}" alt="{{article2.title}}">
-          </a>
-          <div>
-            <h2>{{article2.title}}</h2>
-            <p>Category: {{article2.category.name}}</p>
-            <p class="text-body-secondary">{{article2.updatedAt}}</p>
-            <p>Views: {{article2.views}}</p>
-            <a href="/details?id={{article2._id}}">Read More</a>
+      {{/each}}
+    </div>
+  </div>
+
+
+  {{!-- Most viewed --}}
+  <div class="custom-container container-fluid mt-2 row" data-aos="slide-up" data-aos-duration="1200">
+    <!-- Left Column -->
+    <section class="main-container-left col-6">
+      <h2 style="font-size: 35px; display: flex; justify-content: center;">Most viewed articles (3 news)</h2>
+      <div class="container-top-left">
+        <div class="container-top-left-big">
+          <article onclick="window.location.href='/details?id={{article1._id}}'" style="cursor: pointer;">
+            <img style="height: 55vh; object-fit: cover;" src="{{article1.image_url.[0]}}" alt="{{article1.title}}">
+            <div style="padding-left: 1vw;">
+              <h2>{{article1.title}}</h2>
+              <p>Category: {{article1.category.name}}</p>
+              <p class="text-body-secondary time-elapsed ago" data-updated="{{article1.updatedAt}}"></p>
+              <div style="display: flex; justify-content: space-between;">
+                <p>Views: {{article1.views}}</p>
+                <a href="/details?id={{article2._id}}">
+                  Read More <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Bottom Left Container (for the second and third articles) -->
+        <div class="container-bottom-left">
+          <article onclick="window.location.href='/details?id={{article2._id}}'" style="cursor: pointer;">
+            <img style="height: 27vh; object-fit: cover;" src="{{article2.image_url.[0]}}" alt="{{article2.title}}">
+            <div>
+              <h2>{{article2.title}}</h2>
+              <p>Category: {{article2.category.name}}</p>
+              <p class="text-body-secondary time-elapsed ago" data-updated="{{article2.updatedAt}}"></p>
+              <div style="display: flex; justify-content: space-between;">
+                <p>Views: {{article2.views}}</p>
+                <a href="/details?id={{article2._id}}">
+                  Read More <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article onclick="window.location.href='/details?id={{article3._id}}'" style="cursor: pointer;">
+            <img style="height: 27vh; object-fit: cover;" src="{{article3.image_url.[0]}}" alt="{{article3.title}}">
+            <div>
+              <h2>{{article3.title}}</h2>
+              <p>Category: {{article3.category.name}}</p>
+              <p class="text-body-secondary time-elapsed ago" data-updated="{{article3.updatedAt}}"></p>
+              <div style="display: flex; justify-content: space-between;">
+                <p>Views: {{article3.views}}</p>
+                <a href="/details?id={{article3._id}}">
+                  Read More <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+    </section>
+
+    {{!-- blank middle --}}
+    <section class="col-1"></section>
+
+    <!-- Right Column -->
+    <section class="main-container-right col-5">
+      <h2 style="font-size: 35px;display: flex; justify-content: center;">Top News (10 news)</h2>
+      {{#each topViewedArticles }}
+      <a href="/details?id={{this._id}}">
+        <article class="article-right-container">
+          <div class="text-right-container">
+            <h2>{{this.title}}</h2>
+            <p class="cate-container-right">Category: {{this.category.name}}</p>
+            <p class="text-body-secondary time-elapsed ago" data-updated="{{this.updatedAt}}"></p>
+          </div>
+          <div class="right-content">
+            <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="Right News"></a>
+            <h4>Views: {{this.views}}</h4>
           </div>
         </article>
+      </a>
+      {{/each}}
+    </section>
+  </div>
 
-        <article>
-          <a href="/details?id={{article3._id}}">
-            <img src="{{article3.image_url.[0]}}" alt="{{article3.title}}">
-          </a>
-          <div>
-            <h2>{{article3.title}}</h2>
-            <p>Category: {{article3.category.name}}</p>
-            <p class="text-body-secondary">{{article3.updatedAt}}</p>
-            <p>Views: {{article3.views}}</p>
-            <a href="/details?id={{article3._id}}">Read More</a>
-          </div>
-        </article>
-      </div>
-  </section>
+  <script src="/js/timeAgo.js"></script>
 
-  {{!-- blank middle --}}
-  <section class="col-1"></section>   
-
-  <!-- Right Column -->
-  <section class="main-container-right col-4">
-    <h2 style="font-size: 35px;display: flex; justify-content: center;">Top News (10 news)</h2>
-    {{#each topViewedArticles }}
-    <a href="/details?id={{this._id}}">
-    <article class="article-right-container">
-      <div class="text-right-container">
-        <h2>{{this.title}}</h2>
-        <p class="cate-container-right">Category: {{this.category.name}}</p>
-        <p class="text-body-secondary time-elapsed ago" data-updated="{{this.updatedAt}}"></p>
-      </div>
-      <div class="right-content">
-        <a href="/details?id={{this._id}}"><img src="{{this.image_url.[0]}}" alt="Right News"></a>
-        <h4>Views: {{this.views}}</h4>
-      </div>
-    </article>
-    </a>
-    {{/each}}
-  </section>
-</div>
-
-<script src="/js/timeago.js"></script>
-<!-- AOS CSS -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<!-- AOS JS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  {{!-- Animate scrol (AOS) --}}
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+  </script>
 
 
 </body>

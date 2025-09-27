@@ -97,23 +97,7 @@ export const articleController = {
 
     return articles;
   },
-  getPopularArticlesThisWeek: async () => {
-    const lastWeekDate = new Date();
-    lastWeekDate.setDate(lastWeekDate.getDate() - 7); // 7 days ago
 
-    const articles = await Article.find({
-      status: "published",
-      createdAt: { $gte: lastWeekDate },
-    })
-      .sort({ views: -1 }) // Sort by views descending
-      .limit(4) // Get top 4 articles
-      .populate("category")
-      .populate("tags")
-      .populate("author")
-      .lean();
-
-    return articles;
-  },
   getTop10MostViewedArticles: async () => {
     const articles = await Article.find({ status: "published" })
       .sort({ views: -1 }) // Sort by views descending
@@ -125,6 +109,7 @@ export const articleController = {
 
     return articles;
   },
+
   getTop10NewestArticles: async () => {
     const articles = await Article.find({ status: "published" })
       .sort({ createdAt: -1 }) // Sort by creation date descending
@@ -136,6 +121,7 @@ export const articleController = {
 
     return articles;
   },
+
   getTop5NewestArticles: async () => {
     const articles = await Article.find({ status: "published" })
       .sort({ createdAt: -1 }) // Sort by creation date descending
@@ -147,6 +133,7 @@ export const articleController = {
 
     return articles;
   },
+
   getLatestArticleFromEachCategory: async () => {
     const categories = await Category.find();
 
@@ -192,6 +179,7 @@ export const articleController = {
       console.error(err);
     }
   },
+
   //search bar
   searchArticles: async (query) => {
     try {
@@ -211,6 +199,7 @@ export const articleController = {
       return [];
     }
   },
+
   getArticleByUser: async (id) => {
     if (!id) {
       console.error("ID is not valid!");
@@ -233,6 +222,7 @@ export const articleController = {
       console.error(err);
     }
   },
+
   incrementView: async (id) => {
     try {
       const article = await Article.updateOne(
