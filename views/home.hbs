@@ -69,11 +69,11 @@
   {{!-- Most viewed --}}
   <div class="custom-container container-fluid mt-2 row" data-aos="slide-up" data-aos-duration="1200">
     <!-- Left Column -->
-    <section class="main-container-left col-6">
+    <section class="main-container-left">
       <h2 style="font-size: 35px; display: flex; justify-content: center;">Most viewed articles (3 news)</h2>
       <div class="container-top-left">
         <div class="container-top-left-big">
-          <article onclick="window.location.href='/details?id={{article1._id}}'" style="cursor: pointer;">
+          <article class="container-left-article" onclick="window.location.href='/details?id={{article1._id}}'">
             <img style="height: 55vh; object-fit: cover;" src="{{article1.image_url.[0]}}" alt="{{article1.title}}">
             <div style="padding-left: 1vw;">
               <h2>{{article1.title}}</h2>
@@ -88,10 +88,9 @@
             </div>
           </article>
         </div>
-
-        <!-- Bottom Left Container (for the second and third articles) -->
+        {{!-- Article 2 & 3 --}}
         <div class="container-bottom-left">
-          <article onclick="window.location.href='/details?id={{article2._id}}'" style="cursor: pointer;">
+          <article class="container-left-article" onclick="window.location.href='/details?id={{article2._id}}'">
             <img style="height: 27vh; object-fit: cover;" src="{{article2.image_url.[0]}}" alt="{{article2.title}}">
             <div>
               <h2>{{article2.title}}</h2>
@@ -106,7 +105,8 @@
             </div>
           </article>
 
-          <article onclick="window.location.href='/details?id={{article3._id}}'" style="cursor: pointer;">
+          <article class="container-left-article" onclick="window.location.href='/details?id={{article3._id}}'"
+            style="cursor: pointer;">
             <img style="height: 27vh; object-fit: cover;" src="{{article3.image_url.[0]}}" alt="{{article3.title}}">
             <div>
               <h2>{{article3.title}}</h2>
@@ -121,13 +121,11 @@
             </div>
           </article>
         </div>
+      </div>
     </section>
 
-    {{!-- blank middle --}}
-    <section class="col-1"></section>
-
     <!-- Right Column -->
-    <section class="main-container-right col-5">
+    <section class="main-container-right">
       <h2 style="font-size: 35px;display: flex; justify-content: center;">Top News (10 news)</h2>
       {{#each topViewedArticles }}
       <a href="/details?id={{this._id}}">
