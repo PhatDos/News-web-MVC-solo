@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-import transporter from "../config/nodemailer.js";
+import sgMail from "../config/sendgrid.js";
 import { User } from "../Models/user.js";
 
 const JWT_SECRET = process.env.JWT_SECRET || "SECRET_KEY";
@@ -100,18 +100,15 @@ export async function forgot(req, res) {
       return res.render("forgot", { has_errors: "Email not found" });
     }
 
-    // Tạo token reset (có hạn 5 phút)
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: "5m" });
 
-    // Lấy domain hiện tại từ request
     const baseUrl = req.protocol + "://" + req.get("host");
     const resetLink = `${baseUrl}/auth/reset/${token}`;
 
-    // gửi email
-    await transporter.sendMail({
-      from: `"Support" <${process.env.EMAIL_USER}>`,
+    await sgMail.send({
       to: email,
-      subject: "Password Reset Request(News web)",
+      from: process.env.EMAIL_FROM || "news@gmail.com",
+      subject: "Password Reset Request (News web)",
       html: `
         <p>Hello ${user.full_name || "user"},</p>
         <p>Click the link below to reset your password (valid 5 minutes):</p>
@@ -120,10 +117,11 @@ export async function forgot(req, res) {
     });
 
     return res.render("forgot", {
-      message: "Reset link has been sent to your email.",
+      message:
+        "Reset link has been sent to your email. If you don’t see it, please check your Spam mail.",
     });
   } catch (err) {
-    console.error(err);
+    console.error("❌ Error sending email:", err);
     res.status(500).send("Error sending reset link");
   }
 }
